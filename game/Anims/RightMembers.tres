@@ -17,7 +17,7 @@ tracks/0/keys = {
 "values": [ Vector3( 0, 0, 0 ), Vector3( 70, 0, 0 ), Vector3( 0, 0, 0 ), Vector3( -70, 0, 0 ), Vector3( 0, 0, 0 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("../Right/RightArm:rotation_degrees")
+tracks/1/path = NodePath("RightArm:rotation_degrees")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false

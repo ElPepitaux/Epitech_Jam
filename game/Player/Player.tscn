@@ -309,7 +309,7 @@ mesh = SubResource( 6 )
 skeleton = NodePath("")
 
 [node name="RightArm" type="Spatial" parent="Right"]
-transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -0.318, 1.865, 0 )
+transform = Transform( -1, 0, -8.74227e-08, 0, 1, 0, 8.74228e-08, 0, -1, -0.318, 1.865, 0 )
 
 [node name="Arm" type="MeshInstance" parent="Right/RightArm"]
 transform = Transform( 0.259748, 1.20489e-08, 0.275647, 0.150104, -2.08499e-08, -0.476992, 0, 0.3, -1.31134e-08, 0.531122, -0.607554, 0 )
@@ -335,6 +335,12 @@ anims/RunRight = SubResource( 15 )
 [node name="Camera" type="Camera" parent="."]
 transform = Transform( -1, 0, 0, 0, 1, 0, 0, 0, -1, 0, 2.02973, 1.31163 )
 fov = 96.2492
+
+[node name="Cast" type="RayCast" parent="Camera"]
+enabled = true
+cast_to = Vector3( 0, 0, -100 )
+collision_mask = 4
+collide_with_areas = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 root_node = NodePath("../Left")
