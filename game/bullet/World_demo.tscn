@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://bullet/Bullet.tscn" type="PackedScene" id=2]
+
+[sub_resource type="ProceduralSky" id=2]
+sky_top_color = Color( 0.0352941, 0.607843, 0.921569, 1 )
+
+[sub_resource type="Environment" id=3]
+background_sky = SubResource( 2 )
+
+[sub_resource type="SpatialMaterial" id=1]
+albedo_color = Color( 0, 0, 0, 0.686275 )
+
+[node name="World_demo" type="Spatial"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource( 3 )
+
+[node name="CSGCombiner" type="CSGCombiner" parent="."]
+use_collision = true
+
+[node name="CSGBox" type="CSGBox" parent="CSGCombiner"]
+width = 56.087
+height = 0.347923
+depth = 30.5941
+material = SubResource( 1 )
+
+[node name="Camera" type="Camera" parent="."]
+transform = Transform( 1, 0, 0, 0, 0.984808, 0.173648, 0, -0.173648, 0.984808, 0, 5.40862, 27.029 )
+fov = 50.0
+
+[node name="Bullet" parent="." instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.270611, 6.80969, 0.478382 )

@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://bullet/volley_ball_OBJ.obj" type="ArrayMesh" id=1]
+[ext_resource path="res://bullet/Bullet.gd" type="Script" id=2]
+[ext_resource path="res://bullet/uploads_files_2705643_Fireball.glb" type="PackedScene" id=3]
+
+[sub_resource type="CapsuleShape" id=1]
+radius = 0.320335
+height = 0.002
+
+[node name="Bullet" type="KinematicBody"]
+script = ExtResource( 2 )
+
+[node name="Visual" type="MeshInstance" parent="."]
+mesh = ExtResource( 1 )
+skeleton = NodePath("../CollisionShape")
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+shape = SubResource( 1 )
+
+[node name="Explosion" parent="." instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0756491, 0.0891725, 0.0540755 )
+
+[editable path="Explosion"]
