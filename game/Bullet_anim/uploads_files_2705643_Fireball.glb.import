@@ -2,12 +2,12 @@
 
 importer="scene"
 type="PackedScene"
-path="res://.import/uploads_files_2705643_Fireball.glb-99a661df1d3a73c1ca7339058f8fabab.scn"
+path="res://.import/uploads_files_2705643_Fireball.glb-1d6763a0aec7eccc34d90f4f5589477b.scn"
 
 [deps]
 
-source_file="res://bullet/uploads_files_2705643_Fireball.glb"
-dest_files=[ "res://.import/uploads_files_2705643_Fireball.glb-99a661df1d3a73c1ca7339058f8fabab.scn" ]
+source_file="res://Bullet_anim/uploads_files_2705643_Fireball.glb"
+dest_files=[ "res://.import/uploads_files_2705643_Fireball.glb-1d6763a0aec7eccc34d90f4f5589477b.scn" ]
 
 [params]
 
