@@ -1,4 +1,7 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://All_Enemy/enemy.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Player/Player.tscn" type="PackedScene" id=2]
 
 [sub_resource type="ProceduralSky" id=4]
 sky_top_color = Color( 0.00784314, 0.0784314, 0.0784314, 1 )
@@ -22,6 +25,9 @@ extents = Vector3( 1, 1, 1.90288 )
 
 [node name="Map" type="Spatial"]
 
+[node name="Player" parent="." instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8.14129, -1.65147 )
+
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource( 5 )
 
@@ -36,3 +42,6 @@ material/0 = SubResource( 2 )
 [node name="CollisionShape" type="CollisionShape" parent="Ground"]
 transform = Transform( 63.6343, 0, 0, 0, 1, 0, 0, 0, 33.2898, 0, 0, 0 )
 shape = SubResource( 3 )
+
+[node name="enemy" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 32.7115 )

@@ -1,9 +1,10 @@
 extends KinematicBody
 
 onready var cam = $Camera
-onready var spawn = $Weapon/Spawn
+onready var spawn = $Right/RightArm/Weapon/Spawn
 onready var anim = $AnimationPlayer
-#onready var bullet = preload("Chouchou.tscn")
+onready var cast = $Camera/Cast
+onready var bull = preload("res://Player/Chouchou.tscn")
 
 export var speed = 5
 export var acceleration = 8
@@ -19,6 +20,7 @@ var move_dir = Vector3.ZERO
 var velocity = Vector3.ZERO
 var sprint = 1
 var is_up = 0
+var can_fire = true
 
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
@@ -26,7 +28,17 @@ func _ready():
 func _physics_process(delta):
 	cam.rotation_degrees.x = look_rot.x
 	rotation_degrees.y = look_rot.y
-	
+
+	if Input.is_action_pressed("shoot") and can_fire:
+		var bullet = bull.instance()
+		spawn.add_child(bullet)
+		bullet.look_at(global_transform.origin, Vector3.UP)
+		bullet.rotation_degrees.y += 200
+		bullet.shoot(delta)
+		can_fire = false
+		yield(get_tree().create_timer(0.25), "timeout")
+		can_fire = true
+
 	if Input.is_action_pressed("forward") or Input.is_action_pressed("backward") or Input.is_action_pressed("right") or Input.is_action_pressed("left"):
 		if Input.is_action_pressed("sprint"):
 			anim.current_animation = "Run"
@@ -43,10 +55,6 @@ func _physics_process(delta):
 		sprint = 10
 	else:
 		sprint = 1
-		
-#	if Input.is_action_just_pressed("shoot"):
-#		var chouchou = bullet.instance()
-#		spawn.add_child(chouchou) 
 
 	move_dir = Vector3(
 		Input.get_action_strength("left") - Input.get_action_strength("right"),
