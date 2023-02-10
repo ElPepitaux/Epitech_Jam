@@ -23,8 +23,12 @@ transform = Transform( 1.00526, 0, 0, 0, 0.582358, 0, 0, 0, 0.841927, 0, 0.26385
 shape = SubResource( 2 )
 
 [node name="spider" parent="." instance=ExtResource( 1 )]
+transform = Transform( 3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0 )
 
 [node name="player_dection" type="Area" parent="."]
+transform = Transform( 4.8, 0, 0, 0, 3.12, 0, 0, 0, 3.3, 0, 0, 0 )
+collision_layer = 0
+collision_mask = 2
 script = ExtResource( 3 )
 
 [node name="CollisionShape" type="CollisionShape" parent="player_dection"]

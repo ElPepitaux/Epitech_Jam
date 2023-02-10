@@ -1,0 +1,110 @@
+[gd_scene load_steps=10 format=2]
+
+[sub_resource type="CapsuleMesh" id=1]
+
+[sub_resource type="SphereMesh" id=2]
+
+[sub_resource type="SphereMesh" id=7]
+
+[sub_resource type="SphereShape" id=8]
+
+[sub_resource type="BoxShape" id=9]
+extents = Vector3( 1.96406, 0.964602, 1 )
+
+[sub_resource type="CylinderMesh" id=5]
+
+[sub_resource type="CylinderMesh" id=6]
+
+[sub_resource type="CapsuleMesh" id=3]
+
+[sub_resource type="SphereMesh" id=4]
+
+[node name="Player" type="KinematicBody"]
+collision_layer = 2
+
+[node name="Body" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0 )
+mesh = SubResource( 1 )
+
+[node name="Head" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0 )
+mesh = SubResource( 2 )
+
+[node name="Chouchou" type="MeshInstance" parent="."]
+transform = Transform( 0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 2.68626, -0.804466 )
+mesh = SubResource( 7 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Chouchou"]
+shape = SubResource( 8 )
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 2.72549, 0, 0, 0, 1, 0, 0.480136, 0 )
+shape = SubResource( 9 )
+
+[node name="Left" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.638278, -1.21507, 0 )
+
+[node name="LeftLeg" type="Spatial" parent="Left"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1.20587, -0.0202778, -0.774932, 0.63 )
+
+[node name="Foot" type="MeshInstance" parent="Left/LeftLeg"]
+transform = Transform( 0.255539, 0, 0, 0, -4.60038e-09, -0.105245, 0, 0.507091, -2.21657e-08, 0, 0, -0.196486 )
+mesh = SubResource( 5 )
+__meta__ = {
+"_editor_description_": "r'"
+}
+
+[node name="Leg" type="MeshInstance" parent="Left/LeftLeg"]
+transform = Transform( 0.2, 0, 0, 0, 0.473021, 0, 0, 0, 0.2, 0, 0.546839, -0.506182 )
+mesh = SubResource( 6 )
+
+[node name="LeftArm" type="Spatial" parent="Left"]
+transform = Transform( 0.865825, -0.500348, 0, 0.500348, 0.865825, 0, 0, 0, 1, 0.779254, 1.21507, 0 )
+
+[node name="Arm" type="MeshInstance" parent="Left/LeftArm"]
+transform = Transform( 0.3, 0, 0, 0, -2.4081e-08, -0.55091, 0, 0.3, -1.31134e-08, 0, 0, 0 )
+mesh = SubResource( 3 )
+skeleton = NodePath("../../..")
+__meta__ = {
+"_editor_description_": "	"
+}
+
+[node name="Shoulder" type="MeshInstance" parent="Left/LeftArm"]
+transform = Transform( 0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0.869378, 0 )
+mesh = SubResource( 4 )
+
+[node name="Right" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.638, -1.215, 0 )
+
+[node name="RightLeg" type="Spatial" parent="Right"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1.20587, 0.0198534, -0.775054, 0.629515 )
+
+[node name="Foot" type="MeshInstance" parent="Right/RightLeg"]
+transform = Transform( 0.255539, 0, 0, 0, -4.60038e-09, -0.105245, 0, 0.507091, -2.21657e-08, 0, 0, -0.196486 )
+mesh = SubResource( 5 )
+__meta__ = {
+"_editor_description_": "r'"
+}
+
+[node name="Leg" type="MeshInstance" parent="Right/RightLeg"]
+transform = Transform( 0.2, 0, 0, 0, 0.473021, 0, 0, 0, 0.2, 0, 0.546839, -0.506182 )
+mesh = SubResource( 6 )
+
+[node name="RightArm" type="Spatial" parent="Right"]
+transform = Transform( 0.865825, 0.500348, 0, -0.500348, 0.865825, 0, 0, 0, 1, -0.78, 1.215, 0 )
+
+[node name="Arm" type="MeshInstance" parent="Right/RightArm"]
+transform = Transform( 0.3, 0, 0, 0, -2.4081e-08, -0.55091, 0, 0.3, -1.31134e-08, 0, 0, 0 )
+mesh = SubResource( 3 )
+skeleton = NodePath("../../..")
+__meta__ = {
+"_editor_description_": "	"
+}
+
+[node name="Shoulder" type="MeshInstance" parent="Right/RightArm"]
+transform = Transform( 0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0.869378, 0 )
+mesh = SubResource( 4 )
+
+[node name="Camera" type="Camera" parent="."]
+transform = Transform( -1, 0, 0, 0, 1, 0, 0, 0, -1, 0, 2.02973, 1.00569 )
+fov = 96.2492

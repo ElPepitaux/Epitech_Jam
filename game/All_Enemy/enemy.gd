@@ -20,6 +20,7 @@ func _physics_process(delta):
 		WANDER:
 			seek_player()
 		CHASE:
+			print("oui")
 			pass
 	
 func seek_player():

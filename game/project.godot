@@ -10,7 +10,8 @@ config_version=4
 
 [application]
 
-config/name="Game"
+config/name="mmmmmmh godoooot"
+config/icon="res://icon.png"
 
 [gui]
 
@@ -21,8 +22,8 @@ common/drop_mouse_on_gui_input_disabled=true
 3d_physics/layer_1="World"
 3d_physics/layer_2="Player"
 3d_physics/layer_3="Enemy"
-3d_physics/layer_4="EnemyHurtbox"
-3d_physics/layer_5="PlayerHurtbox"
+3d_physics/layer_4="EnemHurtBox"
+3d_physics/layer_5="PLayerHurtBox"
 
 [physics]
 
