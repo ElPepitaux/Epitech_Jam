@@ -28,7 +28,6 @@ __meta__ = {
 }
 
 [node name="GridMap2" type="GridMap" parent="GridMap"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
 mesh_library = ExtResource( 3 )
 __meta__ = {
 "_editor_clip_": 0,
