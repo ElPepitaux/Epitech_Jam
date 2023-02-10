@@ -10,13 +10,13 @@
 [node name="Map" parent="." instance=ExtResource( 1 )]
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.3396, -1.4672 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -6.82765, 2.3396, 12.941 )
 
 [node name="enemy" parent="." instance=ExtResource( 3 )]
-transform = Transform( -2, 0, -3.01992e-07, 0, 2, 0, 3.01992e-07, 0, -2, 0, 0, 30.5618 )
+transform = Transform( 1.97855, 0, -0.292131, 0, 2, 0, 0.292131, 0, 1.97855, 0, 0, 30.5618 )
 
 [node name="Camera" type="Camera" parent="."]
-transform = Transform( -0.325878, 0.194695, -0.925147, -0.0217521, 0.976762, 0.21322, 0.945162, 0.0896074, -0.31407, -15.1889, 13.4901, 0 )
+transform = Transform( -0.647441, 0.148746, -0.747459, -0.0217521, 0.976762, 0.21322, 0.761805, 0.154306, -0.62916, -12.3864, 13.4901, 0 )
 current = true
 
 [node name="Spatial" parent="." instance=ExtResource( 4 )]

@@ -3,6 +3,7 @@ extends KinematicBody
 onready var animation = $spider/AnimationPlayer
 onready var playerdection = $player_dection
 
+
 enum {
 	IDLE,
 	WANDER,
@@ -13,6 +14,7 @@ var stat = IDLE
 
 var gravity = -14
 var velocity = Vector3.ZERO
+var FRICTION = 20
 
 func _ready():
 	pass
@@ -20,15 +22,19 @@ func _ready():
 func _physics_process(delta):
 	match stat:
 		IDLE:
+			velocity = velocity.move_toward(Vector3.ZERO, delta * FRICTION)
 			seek_player()
 			
 		WANDER:
 			seek_player()
 		CHASE:
 			var player = playerdection.player
-			var direction = global_transform.origin.direction_to(player.get_global_transform().origin)
-			velocity = velocity.move_toward(direction * 5, delta * 10)
-			
+			if player != null:
+				look_at(Vector3(player.translation.x + 180, player.translation.y, player.translation.z + 360), Vector3.UP)
+				var direction = global_transform.origin.direction_to(player.get_global_transform().origin)
+				velocity = velocity.move_toward(direction * 5, delta * 10)
+			else:
+				stat = IDLE
 			
 	velocity = move_and_slide(velocity)
 	
