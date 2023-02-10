@@ -6,6 +6,7 @@
 [ext_resource path="res://World.gd" type="Script" id=4]
 
 [node name="World" type="Spatial"]
+transform = Transform( 1.02189, 0, 0, 0, 1.02189, 0, 0, 0, 1.02189, 0, 0, 0 )
 script = ExtResource( 4 )
 
 [node name="Map" parent="." instance=ExtResource( 1 )]
@@ -14,4 +15,4 @@ script = ExtResource( 4 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 19.68, 0 )
 
 [node name="enemy" parent="." instance=ExtResource( 3 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.876424, 42.8596 )
+transform = Transform( -1, 0, 0.000785502, 0, 1, 0, -0.000785502, 0, -1, 0, 0.876424, 42.8596 )
