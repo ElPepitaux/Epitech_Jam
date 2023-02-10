@@ -21,4 +21,7 @@ shape = SubResource( 1 )
 [node name="Explosion" parent="." instance=ExtResource( 3 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0756491, 0.0891725, 0.0540755 )
 
+[node name="Icosphere001" parent="Explosion" index="1"]
+transform = Transform( -0.260183, -0.554592, -0.540162, -0.551692, 0.532602, -0.281093, 0.543123, 0.275328, -0.544292, 0, 0, 0 )
+
 [editable path="Explosion"]

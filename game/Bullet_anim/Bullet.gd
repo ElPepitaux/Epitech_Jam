@@ -13,10 +13,12 @@ func _ready():
 
 func _physics_process(delta):
 	velocity.y -= GRAVITY * delta
-	print(explosion.is_visible_in_tree())
 	
 	if is_on_floor():
 		explosion.visible = true
 		animation_player.play("Icosphere001Action")
 	
 	velocity = move_and_slide(velocity, Vector3.UP, true, 4, deg2rad(45))
+
+func end_anim():
+	print("iujoihj")
