@@ -75,6 +75,7 @@ func pick_random_state(list_state):
 	return list_state.pop_front()
 
 func _on_HurtBox_area_entered(area):
+	print("oui")
 	stats.health -= 1
 	
 func _on_Stats_no_health():

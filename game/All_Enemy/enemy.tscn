@@ -25,16 +25,19 @@ script = ExtResource( 2 )
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
 transform = Transform( 2.87526, 0, 0, 0, 1.50734, 0, 0, 0, 2.16965, 0, 0.636326, 0 )
+visible = false
 shape = SubResource( 2 )
 
 [node name="spider" parent="." instance=ExtResource( 1 )]
 transform = Transform( 3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0 )
 
 [node name="Wander" parent="." instance=ExtResource( 6 )]
+visible = false
 wander_range = 100
 
 [node name="player_dection" type="Area" parent="."]
 transform = Transform( 7.39468, 0, 0, 0, 4.01323, 0, 0, 0, 7.07006, 0, 0, 0 )
+visible = false
 collision_layer = 0
 collision_mask = 2
 script = ExtResource( 3 )
@@ -43,7 +46,7 @@ script = ExtResource( 3 )
 shape = SubResource( 1 )
 
 [node name="HurtBox" parent="." instance=ExtResource( 4 )]
-transform = Transform( 2.17515, 0, 0, 0, 2.52439, 0, 0, 0, 2.37361, 0, 0, 0 )
+transform = Transform( 2.63037, 0, 0, 0, 2.90968, 0, 0, 0, 3.13336, 0, 0, 0 )
 collision_layer = 8
 collision_mask = 0
 
@@ -53,6 +56,7 @@ shape = SubResource( 3 )
 
 [node name="Hitbox" parent="." instance=ExtResource( 5 )]
 transform = Transform( 1.24566, 0, 0, 0, 0.926959, 0, 0, 0, 1.58132, 0, 0, 0 )
+visible = false
 collision_layer = 0
 collision_mask = 16
 damage = 1

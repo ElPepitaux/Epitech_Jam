@@ -90,6 +90,18 @@ tracks/0/keys = {
 "update": 0,
 "values": [ Vector3( 0, 0, 0 ) ]
 }
+tracks/1/type = "value"
+tracks/1/path = NodePath("RightArm:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( 0, 180, 0 ) ]
+}
 
 [sub_resource type="Animation" id=15]
 resource_name = "RunRight"
@@ -104,6 +116,18 @@ tracks/0/keys = {
 "transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
 "update": 0,
 "values": [ Vector3( 0, 0, 0 ), Vector3( 70, 0, 0 ), Vector3( 0, 0, 0 ), Vector3( -70, 0, 0 ), Vector3( 0, 0, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("RightArm:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.2, 0.5, 0.8, 1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 180, 0 ), Vector3( 70, 180, 0 ), Vector3( 0, 180, 0 ), Vector3( -70, 180, 0 ), Vector3( 0, 180, 0 ) ]
 }
 
 [sub_resource type="Animation" id=10]
@@ -285,7 +309,7 @@ mesh = SubResource( 6 )
 skeleton = NodePath("")
 
 [node name="RightArm" type="Spatial" parent="Right"]
-transform = Transform( -1, 8.85091e-08, -8.74226e-08, 7.60566e-08, -0.121141, -0.992635, -9.84477e-08, -0.992635, 0.121141, -0.318, 1.865, 0 )
+transform = Transform( -1, 0, -8.74227e-08, 0, 1, 0, 8.74228e-08, 0, -1, -0.318, 1.865, 0 )
 
 [node name="Arm" type="MeshInstance" parent="Right/RightArm"]
 transform = Transform( 0.259748, 1.20489e-08, 0.275647, 0.150104, -2.08499e-08, -0.476992, 0, 0.3, -1.31134e-08, 0.531122, -0.607554, 0 )
