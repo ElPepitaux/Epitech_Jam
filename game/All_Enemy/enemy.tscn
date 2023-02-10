@@ -1,0 +1,43 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://All_Enemy/spider.tscn" type="PackedScene" id=1]
+[ext_resource path="res://All_Enemy/enemy.gd" type="Script" id=2]
+[ext_resource path="res://All_Enemy/player_dection.gd" type="Script" id=3]
+[ext_resource path="res://Overlap/HurtBox.tscn" type="PackedScene" id=4]
+
+[sub_resource type="SphereShape" id=2]
+radius = 0.480858
+
+[sub_resource type="SphereShape" id=1]
+radius = 3.72344
+
+[sub_resource type="SphereShape" id=3]
+radius = 0.67365
+
+[node name="enemy" type="KinematicBody"]
+collision_layer = 4
+script = ExtResource( 2 )
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+transform = Transform( 1.00526, 0, 0, 0, 0.582358, 0, 0, 0, 0.841927, 0, 0.263853, 0 )
+shape = SubResource( 2 )
+
+[node name="spider" parent="." instance=ExtResource( 1 )]
+
+[node name="player_dection" type="Area" parent="."]
+script = ExtResource( 3 )
+
+[node name="CollisionShape" type="CollisionShape" parent="player_dection"]
+shape = SubResource( 1 )
+
+[node name="HurtBox" parent="." instance=ExtResource( 4 )]
+transform = Transform( 1.00723, 0, 0, 0, 0.95793, 0, 0, 0, 0.706122, 0, 0, 0 )
+
+[node name="CollisionShape" parent="HurtBox" index="0"]
+transform = Transform( 1, 0, 0, 0, 0.851997, 0, 0, 0, 1, 0, 0, 0 )
+shape = SubResource( 3 )
+
+[connection signal="body_entered" from="player_dection" to="player_dection" method="_on_player_dection_body_entered"]
+[connection signal="body_exited" from="player_dection" to="player_dection" method="_on_player_dection_body_exited"]
+
+[editable path="HurtBox"]
