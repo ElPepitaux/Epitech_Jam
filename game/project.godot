@@ -11,7 +11,6 @@ config_version=4
 [application]
 
 config/name="mmmmmmh godoooot"
-config/icon="res://icon.png"
 
 [gui]
 
