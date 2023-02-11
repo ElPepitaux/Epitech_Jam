@@ -428,6 +428,11 @@ margin_right = 963.0
 margin_bottom = 543.0
 color = Color( 0, 0, 0, 1 )
 
+[node name="AieScreen" type="ColorRect" parent="."]
+margin_right = 1920.0
+margin_bottom = 1080.0
+color = Color( 1, 0, 0, 0.235294 )
+
 [connection signal="area_entered" from="HurtBox" to="." method="_on_HurtBox_area_entered"]
 
 [editable path="Right/RightArm/Rifle"]

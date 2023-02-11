@@ -3,6 +3,7 @@ extends KinematicBody
 onready var cam = $Camera
 onready var spawn = $Right/RightArm/Weapon/Spawn
 onready var anim = $AnimationPlayer
+onready var camera = $Camera
 onready var cast = $Camera/Cast
 onready var end = $Camera/End
 onready var arm = $Right/RightArm
@@ -13,6 +14,7 @@ onready var gun = $Right/RightArm/Weapon
 onready var rifle = $Right/RightArm/Rifle
 onready var stat_rifle = $Right/RightArm/Rifle/WeaponStats
 onready var stat_gun = $Right/RightArm/Weapon/WeaponStats
+onready var aie = $AieScreen
 
 export var speed = 5
 export var acceleration = 8
@@ -42,6 +44,7 @@ func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	arm.rotation_degrees.x = 90
 	rifle.visible = false
+	aie.visible = false
 
 func _physics_process(delta):
 	update_text()
@@ -114,6 +117,10 @@ func _input(event):
 
 func _on_HurtBox_area_entered(area):
 	stat.health -= area.damage
+	aie.visible = true
+	yield(get_tree().create_timer(0.2), "timeout")
+	aie.visible = false
+	
 
 func update_text():
 	hp_text.text = hp_str % stat.health
