@@ -32,3 +32,4 @@ fov = 50.0
 
 [node name="Bullet" parent="." instance=ExtResource( 1 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.270611, 6.80969, 0.478382 )
+visible = false

@@ -9,6 +9,8 @@ onready var arm = $Right/RightArm
 onready var bull = preload("res://Player/Chouchou.tscn")
 onready var hp_text = $Control/info/HP
 onready var ammo_text = $Control/info/Ammo
+onready var gun = $Right/RightArm/Weapon
+onready var rifle = $Right/RightArm/Rifle
 
 export var speed = 5
 export var acceleration = 8
@@ -28,19 +30,29 @@ var sprint = 1
 var is_up = 0
 var can_fire = true
 var hp_str = "HP : %d / 10"
-var ammo_str = "Ammo : %d / 10"
+var ammo_str = "Ammo : %d / %d"
+var nb_ammo = 0
+var nb_ammo_gun = 0
+var nb_ammo_rifle = 0
+var nb_ammo_full = 0
 
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	arm.rotation_degrees.x = 90
+	nb_ammo = gun.get_ammo()
+	nb_ammo_gun = gun.get_ammo()
+	nb_ammo_rifle = rifle.get_ammo()
+	nb_ammo_full = gun.get_ammo()
+	rifle.visible = false
+
 
 func _physics_process(delta):
 	update_text()
 	cam.rotation_degrees.x = look_rot.x
 	rotation_degrees.y = look_rot.y
-	print(rand_range(1, 2))
 
-	if Input.is_action_pressed("shoot") and can_fire:
+	if Input.is_action_pressed("shoot") and can_fire and nb_ammo > 0:
+		nb_ammo -= 1
 		var bullet = bull.instance()
 		spawn.add_child(bullet)
 		bullet.look_at(global_transform.origin, Vector3.UP)
@@ -50,7 +62,14 @@ func _physics_process(delta):
 		can_fire = false
 		yield(get_tree().create_timer(0.5), "timeout")
 		can_fire = true
+		
 		bullet.queue_free()
+		
+	if Input.is_action_just_pressed("switch_weapon"):
+		if gun.visible:
+			use_rifle()
+		else:
+			use_gun()
 		
 	if Input.is_action_pressed("forward") or Input.is_action_pressed("backward") or Input.is_action_pressed("right") or Input.is_action_pressed("left"):
 		if Input.is_action_pressed("sprint"):
@@ -96,4 +115,20 @@ func _on_HurtBox_area_entered(area):
 
 func update_text():
 	hp_text.text = hp_str % stat.health
-	ammo_text.text = ammo_str % 10
+	ammo_text.text = ammo_str % [nb_ammo, nb_ammo_full]
+	
+func use_gun():
+	nb_ammo_rifle = nb_ammo
+	spawn = $Right/RightArm/Weapon/Spawn
+	nb_ammo = nb_ammo_gun
+	rifle.visible = false
+	gun.visible = true
+	nb_ammo_full = gun.get_ammo()
+	
+func use_rifle():
+	nb_ammo_gun = nb_ammo
+	spawn = $Right/RightArm/Rifle/Spawn
+	nb_ammo = nb_ammo_rifle
+	gun.visible = false
+	rifle.visible = true
+	nb_ammo_full = rifle.get_ammo()

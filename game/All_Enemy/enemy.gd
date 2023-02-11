@@ -6,6 +6,8 @@ onready var hitbox = $Hitbox
 onready var wander = $Wander
 onready var stats = $Stats
 onready var softcollision = $softCollision
+onready var lot_2 = preload("res://items/Ammo.tscn")
+onready var map = get_parent()
 
 enum {
 	IDLE,
@@ -88,5 +90,11 @@ func _on_Stats_no_health():
 	animation.play("Die", 0.5)
 	
 func die_animation_finish():
+	var ammo = lot_2.instance()
+	ammo.global_transform = global_transform
+
+	print(ammo.global_transform)
+	map.add_child(ammo)
 	queue_free()
+	
 

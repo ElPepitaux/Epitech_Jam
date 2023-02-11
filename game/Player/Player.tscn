@@ -1,10 +1,11 @@
-[gd_scene load_steps=25 format=2]
+[gd_scene load_steps=26 format=2]
 
 [ext_resource path="res://Player/Weapon.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Player/Player.gd" type="Script" id=2]
 [ext_resource path="res://Anims/RightMembers.tres" type="Animation" id=3]
 [ext_resource path="res://Anims/LeftMembers.tres" type="Animation" id=4]
 [ext_resource path="res://Overlap/HurtBox.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Rifle.tscn" type="PackedScene" id=6]
 
 [sub_resource type="CapsuleMesh" id=1]
 
@@ -128,6 +129,16 @@ tracks/0/keys = {
 "clips": PoolStringArray( "LeftMembers" ),
 "times": PoolRealArray( 0 )
 }
+tracks/1/type = "animation"
+tracks/1/path = NodePath("../Right/RightAnims")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"clips": PoolStringArray( "RightMembers" ),
+"times": PoolRealArray( 0 )
+}
 
 [sub_resource type="Animation" id=11]
 length = 0.001
@@ -193,16 +204,36 @@ tracks/0/keys = {
 "clips": PoolStringArray( "RunLEft" ),
 "times": PoolRealArray( 0 )
 }
+tracks/1/type = "animation"
+tracks/1/path = NodePath("../Right/RightAnims")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"clips": PoolStringArray( "RunRight" ),
+"times": PoolRealArray( 0 )
+}
 
 [sub_resource type="Animation" id=21]
 resource_name = "idle"
 tracks/0/type = "animation"
-tracks/0/path = NodePath("LeftAnims")
+tracks/0/path = NodePath("../Right/RightAnims")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
+"clips": PoolStringArray(  ),
+"times": PoolRealArray(  )
+}
+tracks/1/type = "animation"
+tracks/1/path = NodePath("LeftAnims")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
 "clips": PoolStringArray(  ),
 "times": PoolRealArray(  )
 }
@@ -305,6 +336,9 @@ __meta__ = {
 transform = Transform( 0.259748, -0.150104, 0, 0.150104, 0.259748, 0, 0, 0, 0.3, 0.096131, 0.145175, 0 )
 mesh = SubResource( 4 )
 skeleton = NodePath("")
+
+[node name="Rifle" parent="Right/RightArm" instance=ExtResource( 6 )]
+transform = Transform( -8.32191, -0.658016, 5.50572, -5.53936, 0.543259, -8.30786, 0.247562, -9.96351, -0.816595, 2.87179, -4.30969, 0.049496 )
 
 [node name="Weapon" parent="Right/RightArm" instance=ExtResource( 1 )]
 transform = Transform( -0.173203, 0.000383986, 0.100002, -0.0995084, -0.020529, -0.172269, 0.00993398, -0.198943, 0.0179695, 0.969863, -1.51959, -0.58264 )

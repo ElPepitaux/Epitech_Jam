@@ -14,7 +14,6 @@ func _on_HurtBox_area_entered(area):
 
 
 func _on_Stats_no_health():
-	print(rand_range(1, 2))
 	var health = lot_1.instance()
 	health.global_transform = global_transform
 	map.add_child(health)
