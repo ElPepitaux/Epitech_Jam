@@ -338,7 +338,7 @@ mesh = SubResource( 4 )
 skeleton = NodePath("")
 
 [node name="Rifle" parent="Right/RightArm" instance=ExtResource( 6 )]
-transform = Transform( -8.32191, -0.658016, 5.50572, -5.53936, 0.543259, -8.30786, 0.247562, -9.96351, -0.816595, 2.87179, -4.30969, 0.049496 )
+transform = Transform( -0.172473, 0.00535059, 0.101115, -0.101115, -0.0196548, -0.171433, 0.00535062, -0.19896, 0.0196548, 1.09292, -1.21843, -0.269091 )
 
 [node name="Weapon" parent="Right/RightArm" instance=ExtResource( 1 )]
 transform = Transform( -0.173203, 0.000383986, 0.100002, -0.0995084, -0.020529, -0.172269, 0.00993398, -0.198943, 0.0179695, 0.969863, -1.51959, -0.58264 )
@@ -435,6 +435,4 @@ color = Color( 1, 0, 0, 0.235294 )
 
 [connection signal="area_entered" from="HurtBox" to="." method="_on_HurtBox_area_entered"]
 
-[editable path="Right/RightArm/Rifle"]
-[editable path="Right/RightArm/Weapon"]
 [editable path="HurtBox"]

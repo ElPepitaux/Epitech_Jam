@@ -24,6 +24,7 @@ var FRICTION = 20
 var SPRINT = 10
 var WALK = 5
 var ACCEL = 15
+var count = Count
 
 func _ready():
 	randomize()
@@ -94,6 +95,7 @@ func die_animation_finish():
 	ammo.global_transform = global_transform
 	print(ammo.global_transform.origin)
 	map.add_child(ammo)
+	count.enemy_died += 1
 	queue_free()
 	
 

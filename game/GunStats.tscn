@@ -2,5 +2,8 @@
 
 [ext_resource path="res://WeaponStats.gd" type="Script" id=1]
 
-[node name="WeaponStats" type="Node"]
+[node name="GunStats" type="Node"]
 script = ExtResource( 1 )
+max_ammo = 20
+SPEED = 350
+damage = 2
