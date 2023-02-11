@@ -1,10 +1,11 @@
-[gd_scene load_steps=25 format=2]
+[gd_scene load_steps=26 format=2]
 
 [ext_resource path="res://Player/Weapon.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Player/Player.gd" type="Script" id=2]
 [ext_resource path="res://Anims/RightMembers.tres" type="Animation" id=3]
 [ext_resource path="res://Anims/LeftMembers.tres" type="Animation" id=4]
 [ext_resource path="res://Overlap/HurtBox.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Rifle.tscn" type="PackedScene" id=6]
 
 [sub_resource type="CapsuleMesh" id=1]
 
@@ -335,6 +336,9 @@ __meta__ = {
 transform = Transform( 0.259748, -0.150104, 0, 0.150104, 0.259748, 0, 0, 0, 0.3, 0.096131, 0.145175, 0 )
 mesh = SubResource( 4 )
 skeleton = NodePath("")
+
+[node name="Rifle" parent="Right/RightArm" instance=ExtResource( 6 )]
+transform = Transform( -8.32191, -0.658016, 5.50572, -5.53936, 0.543259, -8.30786, 0.247562, -9.96351, -0.816595, 2.87179, -4.30969, 0.049496 )
 
 [node name="Weapon" parent="Right/RightArm" instance=ExtResource( 1 )]
 transform = Transform( -0.173203, 0.000383986, 0.100002, -0.0995084, -0.020529, -0.172269, 0.00993398, -0.198943, 0.0179695, 0.969863, -1.51959, -0.58264 )
