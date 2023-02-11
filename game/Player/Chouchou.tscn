@@ -73,5 +73,6 @@ collision_mask = 9
 shape = SubResource( 9 )
 
 [connection signal="body_shape_entered" from="." to="." method="_on_Chouchou_body_shape_entered"]
+[connection signal="area_entered" from="Hitbox" to="." method="_on_Hitbox_area_entered"]
 
 [editable path="Hitbox"]

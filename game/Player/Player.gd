@@ -7,6 +7,8 @@ onready var cast = $Camera/Cast
 onready var end = $Camera/End
 onready var arm = $Right/RightArm
 onready var bull = preload("res://Player/Chouchou.tscn")
+onready var hp_text = $Control/info/HP
+onready var ammo_text = $Control/info/Ammo
 
 export var speed = 5
 export var acceleration = 8
@@ -25,12 +27,15 @@ var velocity = Vector3.ZERO
 var sprint = 1
 var is_up = 0
 var can_fire = true
+var hp_str = "HP : %d / 10"
+var ammo_str = "Ammo : %d / 10"
 
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	arm.rotation_degrees.x = 90
-	
+
 func _physics_process(delta):
+	update_text()
 	cam.rotation_degrees.x = look_rot.x
 	rotation_degrees.y = look_rot.y
 	print(stat.health)
@@ -46,7 +51,7 @@ func _physics_process(delta):
 		yield(get_tree().create_timer(0.5), "timeout")
 		can_fire = true
 		bullet.queue_free()
-
+		
 	if Input.is_action_pressed("forward") or Input.is_action_pressed("backward") or Input.is_action_pressed("right") or Input.is_action_pressed("left"):
 		if Input.is_action_pressed("sprint"):
 			anim.current_animation = "Run"
@@ -88,3 +93,7 @@ func _input(event):
 
 func _on_HurtBox_area_entered(area):
 	stat.health -= area.damage
+
+func update_text():
+	hp_text.text = hp_str % stat.health
+	ammo_text.text = ammo_str % 10
