@@ -46,7 +46,7 @@ script = ExtResource( 3 )
 shape = SubResource( 1 )
 
 [node name="HurtBox" parent="." instance=ExtResource( 4 )]
-transform = Transform( 2.63037, 0, 0, 0, 2.90968, 0, 0, 0, 3.13336, 0, 0, 0 )
+transform = Transform( 2.27467, 0, 0, 0, 2.38752, 0, 0, 0, 1.94467, 0, 0, 0 )
 collision_layer = 8
 collision_mask = 0
 
@@ -71,7 +71,10 @@ max_health = 4
 [connection signal="body_entered" from="player_dection" to="player_dection" method="_on_player_dection_body_entered"]
 [connection signal="body_exited" from="player_dection" to="player_dection" method="_on_player_dection_body_exited"]
 [connection signal="area_entered" from="HurtBox" to="." method="_on_HurtBox_area_entered"]
+[connection signal="area_entered" from="Hitbox" to="." method="_on_Hitbox_area_entered"]
+[connection signal="area_exited" from="Hitbox" to="." method="_on_Hitbox_area_exited"]
 [connection signal="no_health" from="Stats" to="." method="_on_Stats_no_health"]
 
+[editable path="spider"]
 [editable path="HurtBox"]
 [editable path="Hitbox"]
