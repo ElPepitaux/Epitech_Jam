@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://16455_1940s_Vehicle_Tire_Pile_v3.obj" type="ArrayMesh" id=1]
+
+[sub_resource type="SpatialMaterial" id=2]
+albedo_color = Color( 0.266667, 0.152941, 0.152941, 1 )
+
+[sub_resource type="BoxShape" id=1]
+extents = Vector3( 1, 1, 5.89263 )
+
+[node name="Spatial" type="Spatial"]
+transform = Transform( 1.50343, 0, 0, 0, 1.50343, 0, 0, 0, 1.50343, -0.0109479, 0.358066, -0.246539 )
+
+[node name="16455_1940s_Vehicle_Tire_Pile_v3" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -13.771, 6.9926, -5.87723 )
+mesh = ExtResource( 1 )
+material/0 = SubResource( 2 )
+
+[node name="StaticBody" type="StaticBody" parent="16455_1940s_Vehicle_Tire_Pile_v3"]
+
+[node name="CollisionShape" type="CollisionShape" parent="16455_1940s_Vehicle_Tire_Pile_v3/StaticBody"]
+transform = Transform( 11.6054, 0, 0, 0, 11.254, 0, 0, 0, 1.13199, 13.3777, -7.63725, 2.75787 )
+shape = SubResource( 1 )

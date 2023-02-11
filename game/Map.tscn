@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://asset/imfin.tscn" type="PackedScene" id=1]
 [ext_resource path="res://ligne.meshlib" type="MeshLibrary" id=2]
@@ -8,6 +8,8 @@
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=6]
 [ext_resource path="res://All_Enemy/enemy.tscn" type="PackedScene" id=7]
 [ext_resource path="res://blacksabbat.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Humvee.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Pneu.tscn" type="PackedScene" id=10]
 
 [sub_resource type="PlaneMesh" id=1]
 
@@ -84,3 +86,24 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.15186, 0 )
 
 [node name="blacksabbat" parent="." instance=ExtResource( 8 )]
 transform = Transform( 0.999215, 0.0376086, -0.0124168, -0.0269335, 0.875112, 0.48317, 0.0290374, -0.482456, 0.875439, 97.5731, 4.79738, 41.5889 )
+
+[node name="Humvee" parent="." instance=ExtResource( 9 )]
+transform = Transform( 0.586214, 0.145474, -4.3204, -0.0195594, 4.35999, 0.144153, 4.32281, 0, 0.586541, 79.5131, 4.46911, -57.4334 )
+
+[node name="Humvee2" parent="." instance=ExtResource( 9 )]
+transform = Transform( 4.08207, 0.0691328, -1.53709, -0.0195594, 4.35999, 0.144153, 1.53852, -0.127997, 4.08011, -69.2706, 4.46911, -44.8801 )
+
+[node name="Spatial7" parent="." instance=ExtResource( 10 )]
+transform = Transform( 0.210598, 0, 0, 0, -0.00424873, 0.210555, 0, -0.210555, -0.00424873, 35.5175, 5.34811, -8.56033 )
+
+[node name="Spatial10" parent="." instance=ExtResource( 10 )]
+transform = Transform( 0.171645, -0.121997, -0.00246175, 0, -0.00424873, 0.210555, -0.122022, -0.17161, -0.00346287, -39.9635, 5.70541, -8.56033 )
+
+[node name="Spatial11" parent="." instance=ExtResource( 10 )]
+transform = Transform( -0.0676666, -0.19939, -0.00402344, 0, -0.00424873, 0.210555, -0.199431, 0.0676528, 0.00136515, -36.8469, 6.04891, 43.43 )
+
+[node name="Spatial9" parent="." instance=ExtResource( 10 )]
+transform = Transform( 0.210598, 0, 0, 0, -0.00424873, 0.210555, 0, -0.210555, -0.00424873, -25.7714, 5.38678, -117.957 )
+
+[node name="Spatial8" parent="." instance=ExtResource( 10 )]
+transform = Transform( 0.210598, 0, 0, 0, -0.00424873, 0.210555, 0, -0.210555, -0.00424873, 77.5977, 6.28486, 43.5034 )
