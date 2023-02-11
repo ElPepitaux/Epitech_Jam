@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=2]
+[gd_scene load_steps=27 format=2]
 
 [ext_resource path="res://asset/imfin.tscn" type="PackedScene" id=1]
 [ext_resource path="res://ligne.meshlib" type="MeshLibrary" id=2]
@@ -19,6 +19,7 @@
 [ext_resource path="res://Truesabat.tscn" type="PackedScene" id=17]
 [ext_resource path="res://Pause_menu/Pause.tscn" type="PackedScene" id=18]
 [ext_resource path="res://Map.gd" type="Script" id=19]
+[ext_resource path="res://bat_animation_fly/scene.gltf" type="PackedScene" id=20]
 
 [sub_resource type="PlaneMesh" id=1]
 
@@ -140,6 +141,15 @@ __meta__ = {
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 23.2484, 0 )
 
 [node name="enemy" parent="." instance=ExtResource( 7 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.15186, 0 )
+
+[node name="enemy2" parent="." instance=ExtResource( 7 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.15186, 0 )
+
+[node name="enemy3" parent="." instance=ExtResource( 7 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.15186, 0 )
+
+[node name="enemy4" parent="." instance=ExtResource( 7 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.15186, 0 )
 
 [node name="blacksabbat" parent="." instance=ExtResource( 8 )]
@@ -287,3 +297,6 @@ transform = Transform( 1, 0, 0, 0, 16.2744, 0, 0, 0, 31.77, 0, 14.3753, 0 )
 shape = SubResource( 6 )
 
 [node name="Pause" parent="." instance=ExtResource( 18 )]
+
+[node name="Bat" parent="." instance=ExtResource( 20 )]
+transform = Transform( 1.00637, 0, 0, 0, 1.00637, 0, 0, 0, 1.00637, -49.6501, 134.039, -34.4446 )

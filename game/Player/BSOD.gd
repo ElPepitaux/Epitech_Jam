@@ -1,19 +1,19 @@
 extends Control
 
-onready var restart_button = $vbc/Restart
-onready var menu_button = $vbc/Main_Menu
-onready var restart_text = $vbc/Restart/Label
-onready var menu_text = $vbc/Main_Menu/Label
+signal restart
+
+onready var button_continue = $VBoxContainer/Restart
+onready var button_mainmenu = $VBoxContainer/Main_Menu
 
 func _ready():
+	self.visible = false
 	var min_size = Vector2.ZERO
 	min_size.x = 960
-	min_size.y = 540
-	restart_button.rect_min_size = min_size
-	menu_button.rect_min_size = min_size
+	min_size.y = 130
+	button_continue.rect_min_size = min_size
+	button_mainmenu.rect_min_size = min_size
+
+
 
 func _on_Restart_pressed():
-	get_tree().change_scene("res://Map.tscn")
-
-func _on_Main_Menu_pressed():
-	get_tree().change_scene("main menu")
+	emit_signal("restart")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=2]
+[gd_scene load_steps=27 format=2]
 
 [ext_resource path="res://Player/Weapon.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Player/Player.gd" type="Script" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://Anims/LeftMembers.tres" type="Animation" id=4]
 [ext_resource path="res://Overlap/HurtBox.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Rifle.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Player/BSOD.tscn" type="PackedScene" id=7]
 
 [sub_resource type="CapsuleMesh" id=1]
 
@@ -432,6 +433,8 @@ color = Color( 0, 0, 0, 1 )
 margin_right = 1920.0
 margin_bottom = 1080.0
 color = Color( 1, 0, 0, 0.235294 )
+
+[node name="BSOD" parent="." instance=ExtResource( 7 )]
 
 [connection signal="area_entered" from="HurtBox" to="." method="_on_HurtBox_area_entered"]
 

@@ -13,6 +13,10 @@ onready var ammo_text = $Control/info/Ammo
 onready var gun = $Right/RightArm/Weapon
 onready var rifle = $Right/RightArm/Rifle
 onready var aie = $AieScreen
+onready var bsod = $BSOD
+onready var current = gun
+onready var cur_stat = stat_gun
+
 
 export var speed = 5
 export var acceleration = 8
@@ -37,14 +41,38 @@ var ammo_str = "Ammo : %d / %d"
 var graps = 0
 var stat_gun = GunStats
 var stat_rifle = RifleStats
-onready var current = gun
-onready var cur_stat = stat_gun
 
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	get_tree().paused = false
+	stat.connect("no_health", self, "show_bsod")
+	bsod.connect("restart", self, "reset")
 	arm.rotation_degrees.x = 90
 	rifle.visible = false
 	aie.visible = false
+	stat = PlayerStats
+	look_rot = Vector3.ZERO
+	arm_rot = Vector3.ZERO
+	move_dir = Vector3.ZERO
+	velocity = Vector3.ZERO
+	sprint = 1
+	is_up = 0
+	can_fire = true
+	hp_str = "HP : %d / 10"
+	ammo_str = "Ammo : %d / %d"
+	graps = 0
+	stat_gun = GunStats
+	stat_rifle = RifleStats
+	
+func show_bsod():
+	update_text()
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+	bsod.visible = true
+	get_tree().paused = true
+
+func reset():
+	PlayerStats.health = 10
+	get_tree().change_scene("res://Map.tscn")
 
 func _physics_process(delta):
 	update_text()
@@ -120,10 +148,9 @@ func _on_HurtBox_area_entered(area):
 	aie.visible = true
 	yield(get_tree().create_timer(0.2), "timeout")
 	aie.visible = false
-	
 
 func update_text():
-	hp_text.text = hp_str % stat.health
+	hp_text.text = hp_str % max(0, stat.health)
 	ammo_text.text = ammo_str % [cur_stat.ammo, cur_stat.max_ammo]
 	
 func use_gun():

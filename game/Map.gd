@@ -1,12 +1,9 @@
 extends Spatial
 
-onready var pause = $Pause
+onready var bat_anim = $Bat/AnimationPlayer
+onready var bat = $Bat
 
-"""func _ready():
-	pause.visible = false
-	get_tree().paused = false
 
-func _process(delta):
-	if Input.is_action_just_pressed("pause"):
-		pause.visible = not pause.visible
-		get_tree().paused = not get_tree().paused"""
+
+func _process(_delta):
+	bat_anim.play("CINEMA_4D_Main")
