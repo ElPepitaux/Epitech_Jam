@@ -18,9 +18,9 @@ var attack_player = false
 var gravity = -14
 var velocity = Vector3.ZERO
 var FRICTION = 20
-var SPRINT = 5
-var WALK = 2
-var ACCEL = 5
+var SPRINT = 10
+var WALK = 5
+var ACCEL = 15
 
 func _ready():
 	randomize()

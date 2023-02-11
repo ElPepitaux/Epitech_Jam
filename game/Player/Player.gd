@@ -14,7 +14,7 @@ export var sensitivity = 0.2
 export var max_angle = 90
 export var min_angle = -80
 export var gravity = 90
-export var jump = 15
+export var jump = 30
 export var max_jumps = 2
 
 var stat = PlayerStats
@@ -56,6 +56,8 @@ func _physics_process(delta):
 	if Input.is_action_just_pressed("jump") and is_up < max_jumps:
 		is_up += 1
 		velocity.y = jump
+	if is_on_floor():
+		is_up = 0
 	if not is_on_floor():
 		velocity.y -= gravity * delta
 	if Input.is_action_pressed("sprint") and is_on_floor():
@@ -81,7 +83,6 @@ func _input(event):
 		look_rot.y -= event.relative.x * sensitivity
 		look_rot.x -= event.relative.y * sensitivity
 		look_rot.x = clamp(look_rot.x,  min_angle, max_angle)
-		
 		arm.rotation_degrees.x = look_rot.x + 90
 
 func _on_HurtBox_area_entered(area):
