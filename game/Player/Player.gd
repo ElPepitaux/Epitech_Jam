@@ -28,7 +28,7 @@ var can_fire = true
 
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-	arm.rotation_degrees.x += 90
+	arm.rotation_degrees.x = 90
 	
 func _physics_process(delta):
 	cam.rotation_degrees.x = look_rot.x
@@ -78,11 +78,11 @@ func _physics_process(delta):
 		
 func _input(event):
 	if event is InputEventMouseMotion:
-		arm.rotation_degrees.x -= event.relative.y * sensitivity
-		arm.rotation_degrees.x = clamp(arm.rotation_degrees.x, -60, 150)
 		look_rot.y -= event.relative.x * sensitivity
 		look_rot.x -= event.relative.y * sensitivity
 		look_rot.x = clamp(look_rot.x,  min_angle, max_angle)
+		
+		arm.rotation_degrees.x = look_rot.x + 90
 
 func _on_HurtBox_area_entered(area):
 	stat.health -= area.damage
