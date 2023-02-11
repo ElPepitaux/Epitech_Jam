@@ -1,6 +1,4 @@
-[gd_scene load_steps=21 format=2]
-
-[ext_resource path="res://WeaponStats.tscn" type="PackedScene" id=2]
+[gd_scene load_steps=20 format=2]
 
 [sub_resource type="CylinderMesh" id=1]
 
@@ -137,8 +135,3 @@ mesh = SubResource( 19 )
 
 [node name="Spawn" type="Spatial" parent="."]
 transform = Transform( 1, -8.74228e-08, 8.74228e-08, 8.74228e-08, 1, 8.74228e-08, -8.74228e-08, -8.74228e-08, 1, 0, 0.0989025, 1.15263 )
-
-[node name="WeaponStats" parent="." instance=ExtResource( 2 )]
-max_ammo = 5
-SPEED = 100
-damage = 3

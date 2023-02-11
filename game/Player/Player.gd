@@ -11,8 +11,8 @@ onready var hp_text = $Control/info/HP
 onready var ammo_text = $Control/info/Ammo
 onready var gun = $Right/RightArm/Weapon
 onready var rifle = $Right/RightArm/Rifle
-onready var stat_rifle = $Right/RightArm/Rifle/WeaponStats
-onready var stat_gun = $Right/RightArm/Weapon/WeaponStats
+onready var stat_rifle = RifleStats
+onready var stat_gun = GunStats
 
 export var speed = 5
 export var acceleration = 8

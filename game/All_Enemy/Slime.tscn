@@ -139,6 +139,7 @@ tracks/3/keys = PoolRealArray( 0, 1, 0, -1.19209e-06, 4.76837e-06, -0.0099746, 0
 
 [sub_resource type="Animation" id=7]
 length = 1.16
+loop = true
 tracks/0/type = "transform"
 tracks/0/path = NodePath("Sketchfab_model/8f4b526ad5bb40e8a038ee6183f7246dfbx/Object_2/RootNode/Object_4/Skeleton:blob1_01")
 tracks/0/interp = 1

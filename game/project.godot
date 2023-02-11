@@ -17,6 +17,8 @@ run/main_scene="res://Map.tscn"
 [autoload]
 
 PlayerStats="*res://Player/PlayerStats.tscn"
+GunStats="*res://GunStats.tscn"
+RifleStats="*res://RifleStats.tscn"
 
 [display]
 
