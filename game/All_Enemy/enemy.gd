@@ -5,6 +5,9 @@ onready var playerdection = $player_dection
 onready var hitbox = $Hitbox
 onready var wander = $Wander
 onready var stats = $Stats
+onready var softcollision = $softCollision
+onready var lot_2 = preload("res://items/Ammo.tscn")
+onready var map = get_parent()
 
 enum {
 	IDLE,
@@ -14,12 +17,13 @@ enum {
 
 var stat = IDLE
 
+var attack_player = false
 var gravity = -14
 var velocity = Vector3.ZERO
 var FRICTION = 20
-var SPRINT = 5
-var WALK = 2
-var ACCEL = 5
+var SPRINT = 10
+var WALK = 5
+var ACCEL = 15
 
 func _ready():
 	randomize()
@@ -58,12 +62,15 @@ func _physics_process(delta):
 				look_at(player.global_transform.origin, Vector3.UP)
 				rotation_degrees.y += 180
 				var direction = global_transform.origin.direction_to(player.get_global_transform().origin)
+				
 				velocity = velocity.move_toward(direction * SPRINT, delta * ACCEL)
 			else:
 				stat = IDLE
 			
 	velocity.y += gravity * delta
 			
+	if softcollision.is_colliding():
+		velocity += softcollision.get_push_vector()
 	velocity = move_and_slide(velocity)
 	
 func seek_player():
@@ -75,8 +82,18 @@ func pick_random_state(list_state):
 	return list_state.pop_front()
 
 func _on_HurtBox_area_entered(area):
-	print("oui")
-	stats.health -= 1
+	stats.health -= area.damage
 	
 func _on_Stats_no_health():
+	stat = null
+	velocity = Vector3.ZERO
+	animation.play("Die", 0.5)
+	
+func die_animation_finish():
+	var ammo = lot_2.instance()
+	ammo.global_transform = global_transform
+	print(ammo.global_transform.origin)
+	map.add_child(ammo)
 	queue_free()
+	
+

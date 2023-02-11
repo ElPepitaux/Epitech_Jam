@@ -31,7 +31,9 @@ material = SubResource( 1 )
 
 [node name="Camera" type="Camera" parent="."]
 transform = Transform( 1, 0, 0, 0, 0.984808, 0.173648, 0, -0.173648, 0.984808, 0, 5.40862, 27.029 )
+current = true
 fov = 50.0
 
 [node name="Bullet" parent="." instance=ExtResource( 1 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.270611, 6.80969, 0.478382 )
+visible = false

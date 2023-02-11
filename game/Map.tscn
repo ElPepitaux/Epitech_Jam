@@ -1,23 +1,180 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=17 format=2]
 
-[sub_resource type="CubeMesh" id=1]
+[ext_resource path="res://asset/imfin.tscn" type="PackedScene" id=1]
+[ext_resource path="res://ligne.meshlib" type="MeshLibrary" id=2]
+[ext_resource path="res://des.meshlib" type="MeshLibrary" id=3]
+[ext_resource path="res://asset/neutralfloor.meshlib" type="MeshLibrary" id=4]
+[ext_resource path="res://spawn.meshlib" type="MeshLibrary" id=5]
+[ext_resource path="res://Player/Player.tscn" type="PackedScene" id=6]
+[ext_resource path="res://All_Enemy/enemy.tscn" type="PackedScene" id=7]
+[ext_resource path="res://blacksabbat.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Humvee.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Pneu.tscn" type="PackedScene" id=10]
+[ext_resource path="res://asset/wall.jpg" type="Texture" id=11]
+
+[sub_resource type="PlaneMesh" id=1]
 
 [sub_resource type="SpatialMaterial" id=2]
-albedo_color = Color( 0.403922, 0.403922, 0.403922, 1 )
+albedo_color = Color( 0, 0, 0, 1 )
 
-[sub_resource type="BoxShape" id=3]
-extents = Vector3( 1, 1, 1.90288 )
+[sub_resource type="PlaneMesh" id=3]
 
-[node name="Map" type="Spatial"]
+[sub_resource type="SpatialMaterial" id=5]
+albedo_texture = ExtResource( 11 )
 
-[node name="Ground" type="StaticBody" parent="."]
+[sub_resource type="PlaneShape" id=4]
 
-[node name="MeshInstance" type="MeshInstance" parent="Ground"]
-transform = Transform( 63.3827, 0, 0, 0, 0.198505, 0, 0, 0, 63.3827, 0, 0, 0 )
+[node name="map" type="Spatial"]
+
+[node name="MeshInstance" type="MeshInstance" parent="."]
+transform = Transform( 14.0404, 0, 0, 0, 4.62503, 0, 0, 0, -16.3434, 0, 0, 0 )
 mesh = SubResource( 1 )
-skeleton = NodePath("../..")
 material/0 = SubResource( 2 )
 
-[node name="CollisionShape" type="CollisionShape" parent="Ground"]
-transform = Transform( 63.6343, 0, 0, 0, 1, 0, 0, 0, 33.2898, 0, 0, 0 )
-shape = SubResource( 3 )
+[node name="GridMap3" type="GridMap" parent="MeshInstance"]
+mesh_library = ExtResource( 2 )
+data = {
+"cells": PoolIntArray( 0, 1, 0, 1, 1, 0, 2, 1, 0, 3, 1, 0, 4, 1, 0, 65531, 1, 0, 65532, 1, 0, 65533, 1, 0, 65534, 1, 0 )
+}
+__meta__ = {
+"_editor_clip_": 0
+}
+
+[node name="GridMap" type="GridMap" parent="MeshInstance"]
+mesh_library = ExtResource( 4 )
+data = {
+"cells": PoolIntArray( 2, 0, 0, 4, 0, 0, 65531, 0, 0, 4, 2, 0, 65531, 2, 0, 65532, 2, 0, 65533, 2, 0, 65534, 2, 0, 65535, 2, 0, 4, 3, 0, 65531, 3, 0, 65533, 3, 0, 65534, 3, 0, 4, 4, 0, 65531, 4, 0, 65532, 4, 0, 0, 5, 0, 1, 5, 0, 2, 5, 0, 3, 5, 0, 4, 5, 0, 65531, 5, 0, 65532, 5, 0, 65533, 5, 0, 65534, 5, 0, 65535, 5, 0, 0, 65533, 0, 1, 65533, 0, 2, 65533, 0, 3, 65533, 0, 4, 65533, 0, 65531, 65533, 0, 65532, 65533, 0, 65533, 65533, 0, 65534, 65533, 0, 65535, 65533, 0, 0, 65534, 0, 1, 65534, 0, 2, 65534, 0, 3, 65534, 0, 4, 65534, 0, 65531, 65534, 0, 65532, 65534, 0, 65533, 65534, 0, 4, 65535, 0, 65531, 65535, 0, 65532, 65535, 0, 65534, 65535, 0, 65535, 65535, 0 )
+}
+__meta__ = {
+"_editor_clip_": 0,
+"_editor_floor_": Vector3( 0, 0, 0 )
+}
+
+[node name="GridMap2" type="GridMap" parent="MeshInstance"]
+mesh_library = ExtResource( 3 )
+data = {
+"cells": PoolIntArray( 0, 0, 0, 1, 0, 0, 3, 0, 0, 65532, 0, 0, 65533, 0, 0, 65534, 0, 0, 65535, 0, 0, 65535, 1, 0, 0, 2, 0, 1, 2, 0, 2, 2, 0, 3, 2, 0, 0, 3, 0, 1, 3, 0, 2, 3, 0, 3, 3, 0, 65532, 3, 0, 65535, 3, 0, 0, 4, 0, 1, 4, 0, 2, 4, 0, 3, 4, 0, 65533, 4, 0, 65534, 4, 0, 65535, 4, 0, 65534, 65534, 0, 65535, 65534, 0, 0, 65535, 0, 1, 65535, 0, 2, 65535, 0, 3, 65535, 0, 65533, 65535, 0 )
+}
+__meta__ = {
+"_editor_clip_": 0
+}
+
+[node name="Spatial" parent="." instance=ExtResource( 1 )]
+transform = Transform( 3.05337, 0, 0, 0, 3.05337, 0, 0, 0, 3.05337, 95.7107, 4.09353, 29.4674 )
+
+[node name="Spatial5" parent="." instance=ExtResource( 1 )]
+transform = Transform( 3.05337, 0, 0, 0, 3.05337, 0, 0, 0, 3.05337, -111.645, -6.83722, -143.085 )
+
+[node name="Spatial12" parent="." instance=ExtResource( 1 )]
+transform = Transform( 2.96129, 0, -0.744209, -0.195474, 2.94616, -0.777814, 0.718078, 0.802, 2.85731, -19.8977, -6.83722, -143.085 )
+
+[node name="Spatial15" parent="." instance=ExtResource( 1 )]
+transform = Transform( 2.70471, -1.08159, 0.915289, 1.14454, 2.83049, -0.0373852, -0.835236, 0.376209, 2.91272, 27.573, -6.83722, -88.295 )
+
+[node name="Spatial6" parent="." instance=ExtResource( 1 )]
+transform = Transform( 0.736204, -2.34149, 1.81617, 2.91279, 0.915828, 0, -0.544742, 1.73255, 2.4545, -87.9605, -6.83721, -108.349 )
+
+[node name="Spatial2" parent="." instance=ExtResource( 1 )]
+transform = Transform( 3.05337, 0, 0, 0, 2.40251, 1.88442, 0, -1.88442, 2.40251, 75.9431, -11.7821, -135.297 )
+
+[node name="Spatial3" parent="." instance=ExtResource( 1 )]
+transform = Transform( 3.05214, 0.0712861, -0.0491457, 0.076655, -1.41877, 2.70264, 0.0402618, -2.70279, -1.41999, -23.1856, 6.09353, 29.4674 )
+
+[node name="Spatial4" parent="." instance=ExtResource( 1 )]
+transform = Transform( 3.00999, -0.512884, 0, 0.512884, 3.00999, 0, 0, 0, 3.05337, -93.7554, -0.223724, 29.4674 )
+
+[node name="Spatial14" parent="." instance=ExtResource( 1 )]
+transform = Transform( 3.05274, 0.0622411, 0, -0.0622411, 3.05274, 0, 0, 0, 3.05337, -59.784, -0.223724, 66.0097 )
+
+[node name="Spatial13" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1.8501, 2.02985, -1.33414, -1.3591, 2.25503, 1.54622, 2.01322, -0.34304, 2.26988, 18.4593, -4.74385, 9.24277 )
+
+[node name="Spatial17" parent="." instance=ExtResource( 1 )]
+transform = Transform( 0.693514, -0.962162, -2.8136, 0.637162, 2.87009, -0.824427, 2.90451, -0.399876, 0.852663, 18.4593, -4.74385, 57.5506 )
+
+[node name="Spatial16" parent="." instance=ExtResource( 1 )]
+transform = Transform( 2.29119, 0.111905, -2.0152, -0.0789579, 3.05131, 0.0796691, 2.01676, -0.00767055, 2.29253, -0.790329, -4.74385, -30.1076 )
+
+[node name="GridMap" type="GridMap" parent="."]
+mesh_library = ExtResource( 5 )
+data = {
+"cells": PoolIntArray( 196593, 0, 0, 196594, 0, 0, 196595, 0, 0, 196596, 0, 0, 196594, 1, 0, 131112, 10, 0, 131113, 10, 0, 131114, 10, 0, 131118, 11, 0, 131120, 11, 0, 131115, 12, 0, 131121, 15, 0, 25, 65467, 0, 26, 65467, 0, 27, 65467, 0, 29, 65467, 0, 24, 65468, 0, 25, 65468, 0, 31, 65468, 0, 23, 65469, 0, 34, 65470, 0, 22, 65471, 0, 35, 65472, 0, 19, 65473, 0, 34, 65474, 0, 18, 65475, 0, 131083, 65475, 0, 131083, 65476, 0, 131092, 65476, 0, 24, 65477, 0, 131080, 65477, 0, 131090, 65477, 0, 131091, 65477, 0, 131092, 65477, 0, 23, 65478, 0, 33, 65478, 0, 131079, 65478, 0, 131080, 65478, 0, 131092, 65478, 0, 15, 65479, 0, 131079, 65479, 0, 131092, 65479, 0, 131103, 65479, 0, 131104, 65479, 0, 14, 65480, 0, 21, 65480, 0, 131097, 65480, 0, 131098, 65480, 0, 131100, 65480, 0, 14, 65481, 0, 20, 65481, 0, 31, 65481, 0, 131096, 65481, 0, 13, 65482, 0, 131093, 65482, 0, 131095, 65482, 0, 18, 65483, 0, 131087, 65483, 0, 131092, 65483, 0, 29, 65484, 0, 131087, 65484, 0, 131089, 65484, 0, 16, 65486, 0, 26, 65486, 0, 196596, 65486, 0, 196597, 65487, 0, 196598, 65487, 0, 14, 65488, 0, 24, 65488, 0, 196598, 65488, 0, 13, 65489, 0, 196598, 65489, 0, 12, 65490, 0, 21, 65490, 0, 11, 65491, 0, 12, 65491, 0, 19, 65491, 0, 17, 65492, 0, 15, 65493, 0, 11, 65494, 0, 13, 65494, 0, 65532, 65494, 0, 10, 65495, 0, 10, 65496, 0, 11, 65497, 0, 65552, 65497, 0, 65554, 65497, 0, 65555, 65497, 0, 65548, 65498, 0, 65549, 65498, 0, 65551, 65498, 0, 11, 65499, 0, 65547, 65499, 0, 65540, 65500, 0, 65542, 65500, 0, 65543, 65500, 0, 65537, 65501, 0, 65538, 65501, 0, 65539, 65501, 0, 65536, 65502, 0, 131070, 65502, 0, 131071, 65502, 0, 131067, 65503, 0, 131068, 65503, 0, 131069, 65503, 0, 131066, 65504, 0, 12, 65505, 0, 131065, 65505, 0, 131062, 65506, 0, 131063, 65506, 0, 131061, 65507, 0, 131059, 65508, 0, 131060, 65508, 0, 131058, 65509, 0, 131059, 65509, 0, 13, 65510, 0, 131058, 65510, 0, 13, 65513, 0, 14, 65515, 0, 14, 65516, 0, 15, 65516, 0, 16, 65516, 0, 196593, 65534, 0, 196594, 65534, 0, 196595, 65534, 0, 196596, 65534, 0, 196593, 65535, 0, 196594, 65535, 0, 196595, 65535, 0 )
+}
+__meta__ = {
+"_editor_clip_": 0,
+"_editor_floor_": Vector3( 0, 2, 0 )
+}
+
+[node name="Player" parent="." instance=ExtResource( 6 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 23.2484, 0 )
+
+[node name="enemy" parent="." instance=ExtResource( 7 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.15186, 0 )
+
+[node name="blacksabbat" parent="." instance=ExtResource( 8 )]
+transform = Transform( 0.999215, 0.0376086, -0.0124168, -0.0269335, 0.875112, 0.48317, 0.0290374, -0.482456, 0.875439, 97.5731, 4.79738, 41.5889 )
+
+[node name="Humvee" parent="." instance=ExtResource( 9 )]
+transform = Transform( 0.586214, 0.145474, -4.3204, -0.0195594, 4.35999, 0.144153, 4.32281, 0, 0.586541, 79.5131, 4.46911, -57.4334 )
+
+[node name="Humvee2" parent="." instance=ExtResource( 9 )]
+transform = Transform( 4.08207, 0.0691328, -1.53709, -0.0195594, 4.35999, 0.144153, 1.53852, -0.127997, 4.08011, -69.2706, 4.46911, -44.8801 )
+
+[node name="Spatial7" parent="." instance=ExtResource( 10 )]
+transform = Transform( 0.210598, 0, 0, 0, -0.00424873, 0.210555, 0, -0.210555, -0.00424873, 35.5175, 5.34811, -8.56033 )
+
+[node name="Spatial10" parent="." instance=ExtResource( 10 )]
+transform = Transform( 0.171645, -0.121997, -0.00246175, 0, -0.00424873, 0.210555, -0.122022, -0.17161, -0.00346287, -39.9635, 5.70541, -8.56033 )
+
+[node name="Spatial11" parent="." instance=ExtResource( 10 )]
+transform = Transform( -0.0676666, -0.19939, -0.00402344, 0, -0.00424873, 0.210555, -0.199431, 0.0676528, 0.00136515, -36.8469, 6.04891, 43.43 )
+
+[node name="Spatial9" parent="." instance=ExtResource( 10 )]
+transform = Transform( 0.210598, 0, 0, 0, -0.00424873, 0.210555, 0, -0.210555, -0.00424873, -25.7714, 5.38678, -117.957 )
+
+[node name="Spatial8" parent="." instance=ExtResource( 10 )]
+transform = Transform( 0.210598, 0, 0, 0, -0.00424873, 0.210555, 0, -0.210555, -0.00424873, 77.5977, 6.28486, 43.5034 )
+
+[node name="MeshInstance2" type="MeshInstance" parent="."]
+transform = Transform( -142.731, -1.24779e-05, -6.23895e-06, 6.23895e-06, 2.72713e-13, -142.731, 1.24779e-05, -142.731, 2.72713e-13, 0, 16.3948, 96.343 )
+mesh = SubResource( 3 )
+material/0 = SubResource( 5 )
+
+[node name="StaticBody" type="StaticBody" parent="MeshInstance2"]
+
+[node name="CollisionShape" type="CollisionShape" parent="MeshInstance2/StaticBody"]
+transform = Transform( -0.142905, 0.0335778, -1.08216e-08, 0.00480307, 0.999035, -2.30446e-09, 1.09545e-08, -1.90182e-08, -0.14016, 0, 0, 0 )
+shape = SubResource( 4 )
+
+[node name="MeshInstance5" type="MeshInstance" parent="."]
+transform = Transform( 142.731, 0, 0, 0, -6.23895e-06, -142.731, 0, 142.731, -6.23895e-06, 0, 16.3948, -194.875 )
+mesh = SubResource( 3 )
+material/0 = SubResource( 5 )
+
+[node name="StaticBody" type="StaticBody" parent="MeshInstance5"]
+
+[node name="CollisionShape" type="CollisionShape" parent="MeshInstance5/StaticBody"]
+transform = Transform( -0.142905, 0.0335778, -1.08216e-08, 0.00480307, 0.999035, -2.30446e-09, 1.09545e-08, -1.90182e-08, -0.14016, 0, 0, 0 )
+shape = SubResource( 4 )
+
+[node name="MeshInstance3" type="MeshInstance" parent="."]
+transform = Transform( -7.28252e-06, -166.605, 7.28252e-06, 0, -7.28252e-06, -166.605, 166.605, -7.28252e-06, 3.18329e-13, 127.098, 7.88332, -40.449 )
+mesh = SubResource( 3 )
+material/0 = SubResource( 5 )
+
+[node name="StaticBody" type="StaticBody" parent="MeshInstance3"]
+
+[node name="CollisionShape" type="CollisionShape" parent="MeshInstance3/StaticBody"]
+transform = Transform( -0.142905, 0.0335778, -1.08216e-08, 0.00480307, 0.999035, -2.30446e-09, 1.09545e-08, -1.90182e-08, -0.14016, 0, 0, 0 )
+shape = SubResource( 4 )
+
+[node name="MeshInstance4" type="MeshInstance" parent="."]
+transform = Transform( -7.28252e-06, 166.605, 6.36658e-13, -7.28252e-06, 3.18329e-13, -166.605, -166.605, -7.28252e-06, 7.28252e-06, -134.886, 7.88332, -40.449 )
+mesh = SubResource( 3 )
+material/0 = SubResource( 5 )
+
+[node name="StaticBody" type="StaticBody" parent="MeshInstance4"]
+
+[node name="CollisionShape" type="CollisionShape" parent="MeshInstance4/StaticBody"]
+transform = Transform( -0.142905, 0.0335778, -1.08216e-08, 0.00480307, 0.999035, -2.30446e-09, 1.09545e-08, -1.90182e-08, -0.14016, 0, 0, 0 )
+shape = SubResource( 4 )

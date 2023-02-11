@@ -1,9 +1,11 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=26 format=2]
 
 [ext_resource path="res://Player/Weapon.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Player/Player.gd" type="Script" id=2]
 [ext_resource path="res://Anims/RightMembers.tres" type="Animation" id=3]
 [ext_resource path="res://Anims/LeftMembers.tres" type="Animation" id=4]
+[ext_resource path="res://Overlap/HurtBox.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Rifle.tscn" type="PackedScene" id=6]
 
 [sub_resource type="CapsuleMesh" id=1]
 
@@ -76,6 +78,10 @@ tracks/1/keys = {
 "values": [ Vector3( 0, 0, 0 ), Vector3( 70, 0, 0 ), Vector3( 0, 0, 0 ), Vector3( -70, 0, 0 ), Vector3( 0, 0, 0 ) ]
 }
 
+[sub_resource type="Animation" id=19]
+resource_name = "idle_left"
+length = 4.0
+
 [sub_resource type="Animation" id=14]
 length = 0.001
 tracks/0/type = "value"
@@ -89,18 +95,6 @@ tracks/0/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 0,
 "values": [ Vector3( 0, 0, 0 ) ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("RightArm:rotation_degrees")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Vector3( 0, 180, 0 ) ]
 }
 
 [sub_resource type="Animation" id=15]
@@ -117,18 +111,10 @@ tracks/0/keys = {
 "update": 0,
 "values": [ Vector3( 0, 0, 0 ), Vector3( 70, 0, 0 ), Vector3( 0, 0, 0 ), Vector3( -70, 0, 0 ), Vector3( 0, 0, 0 ) ]
 }
-tracks/1/type = "value"
-tracks/1/path = NodePath("RightArm:rotation_degrees")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0, 0.2, 0.5, 0.8, 1 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
-"update": 0,
-"values": [ Vector3( 0, 180, 0 ), Vector3( 70, 180, 0 ), Vector3( 0, 180, 0 ), Vector3( -70, 180, 0 ), Vector3( 0, 180, 0 ) ]
-}
+
+[sub_resource type="Animation" id=20]
+resource_name = "idle_right"
+length = 4.0
 
 [sub_resource type="Animation" id=10]
 resource_name = "Move"
@@ -229,8 +215,34 @@ tracks/1/keys = {
 "times": PoolRealArray( 0 )
 }
 
+[sub_resource type="Animation" id=21]
+resource_name = "idle"
+tracks/0/type = "animation"
+tracks/0/path = NodePath("../Right/RightAnims")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"clips": PoolStringArray(  ),
+"times": PoolRealArray(  )
+}
+tracks/1/type = "animation"
+tracks/1/path = NodePath("LeftAnims")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"clips": PoolStringArray(  ),
+"times": PoolRealArray(  )
+}
+
+[sub_resource type="BoxShape" id=22]
+
 [node name="Player" type="KinematicBody"]
 collision_layer = 2
+collision_mask = 33
 script = ExtResource( 2 )
 
 [node name="Body" type="MeshInstance" parent="."]
@@ -288,6 +300,7 @@ skeleton = NodePath("")
 anims/LeftMembers = ExtResource( 4 )
 anims/RESET = SubResource( 12 )
 anims/RunLEft = SubResource( 13 )
+anims/idle_left = SubResource( 19 )
 
 [node name="Right" type="Spatial" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.638, -1.215, 0 )
@@ -309,7 +322,7 @@ mesh = SubResource( 6 )
 skeleton = NodePath("")
 
 [node name="RightArm" type="Spatial" parent="Right"]
-transform = Transform( -1, 0, -8.74227e-08, 0, 1, 0, 8.74228e-08, 0, -1, -0.318, 1.865, 0 )
+transform = Transform( -0.820217, -0.569089, 0.0581562, -0.570054, 0.821607, 0, -0.0477816, -0.0331522, -0.998308, -0.318, 1.865, 0 )
 
 [node name="Arm" type="MeshInstance" parent="Right/RightArm"]
 transform = Transform( 0.259748, 1.20489e-08, 0.275647, 0.150104, -2.08499e-08, -0.476992, 0, 0.3, -1.31134e-08, 0.531122, -0.607554, 0 )
@@ -324,23 +337,32 @@ transform = Transform( 0.259748, -0.150104, 0, 0.150104, 0.259748, 0, 0, 0, 0.3,
 mesh = SubResource( 4 )
 skeleton = NodePath("")
 
+[node name="Rifle" parent="Right/RightArm" instance=ExtResource( 6 )]
+transform = Transform( -8.32191, -0.658016, 5.50572, -5.53936, 0.543259, -8.30786, 0.247562, -9.96351, -0.816595, 2.87179, -4.30969, 0.049496 )
+
 [node name="Weapon" parent="Right/RightArm" instance=ExtResource( 1 )]
-transform = Transform( -0.2, 1.73913e-08, -1.80366e-09, 0, -0.0206314, -0.198933, -1.74846e-08, -0.198933, 0.0206314, 0.573655, -1.4052, -0.59406 )
+transform = Transform( -0.173203, 0.000383986, 0.100002, -0.0995084, -0.020529, -0.172269, 0.00993398, -0.198943, 0.0179695, 0.969863, -1.51959, -0.58264 )
 
 [node name="RightAnims" type="AnimationPlayer" parent="Right"]
 anims/RESET = SubResource( 14 )
 anims/RightMembers = ExtResource( 3 )
 anims/RunRight = SubResource( 15 )
+anims/idle_right = SubResource( 20 )
 
 [node name="Camera" type="Camera" parent="."]
-transform = Transform( -1, 0, 0, 0, 1, 0, 0, 0, -1, 0, 2.02973, 1.31163 )
+transform = Transform( -1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 1.99634, 1.15801 )
+current = true
 fov = 96.2492
+far = 8192.0
 
 [node name="Cast" type="RayCast" parent="Camera"]
 enabled = true
 cast_to = Vector3( 0, 0, -100 )
 collision_mask = 4
 collide_with_areas = true
+
+[node name="End" type="Spatial" parent="Camera"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -100.017 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 root_node = NodePath("../Left")
@@ -350,3 +372,64 @@ anims/Move = SubResource( 10 )
 anims/RESET = SubResource( 11 )
 anims/RightMembers = ExtResource( 3 )
 anims/Run = SubResource( 16 )
+anims/idle = SubResource( 21 )
+
+[node name="HurtBox" parent="." instance=ExtResource( 5 )]
+collision_layer = 16
+collision_mask = 0
+
+[node name="CollisionShape" parent="HurtBox" index="0"]
+transform = Transform( 1.94407, 0, 0, 0, 2.69185, 0, 0, 0, 1, 0, 0.526036, 0 )
+shape = SubResource( 22 )
+
+[node name="Control" type="Control" parent="."]
+margin_right = 160.0
+margin_bottom = 48.0
+
+[node name="info" type="ColorRect" parent="Control"]
+anchor_top = 22.5
+anchor_bottom = 22.5
+margin_left = 1.0
+margin_top = -92.0001
+margin_right = 256.0
+margin_bottom = -0.00012207
+color = Color( 1, 1, 1, 0.572549 )
+
+[node name="HP" type="Label" parent="Control/info"]
+margin_left = 93.0
+margin_right = 255.0
+margin_bottom = 44.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "HP : 10 / 10"
+align = 1
+valign = 1
+
+[node name="Ammo" type="Label" parent="Control/info"]
+margin_left = 92.0
+margin_top = 47.0
+margin_right = 254.0
+margin_bottom = 92.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Ammo : 10 /10"
+align = 1
+valign = 1
+
+[node name="ColorRect" type="ColorRect" parent="Control/info"]
+margin_left = -1.0
+margin_top = -1.0
+margin_right = 92.0
+margin_bottom = 92.0
+color = Color( 0, 0, 0, 0.686275 )
+
+[node name="aim" type="ColorRect" parent="Control"]
+margin_left = 957.0
+margin_top = 537.0
+margin_right = 963.0
+margin_bottom = 543.0
+color = Color( 0, 0, 0, 1 )
+
+[connection signal="area_entered" from="HurtBox" to="." method="_on_HurtBox_area_entered"]
+
+[editable path="Right/RightArm/Rifle"]
+[editable path="Right/RightArm/Weapon"]
+[editable path="HurtBox"]
