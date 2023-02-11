@@ -19,4 +19,4 @@ func _physics_process(delta):
 		explosion.visible = true
 		animation_player.play("Icosphere001Action")
 	
-	velocity = move_and_slide(velocity, Vector3.UP, true, 4, deg2rad(45))
+	velocity = move_and_slide(velocity)

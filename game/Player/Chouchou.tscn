@@ -1,7 +1,8 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Player/Chouchou.gd" type="Script" id=1]
 [ext_resource path="res://Overlap/Hitbox.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Bullet_anim/uploads_files_2705643_Fireball.glb" type="PackedScene" id=3]
 
 [sub_resource type="SphereMesh" id=1]
 
@@ -72,7 +73,11 @@ collision_mask = 9
 [node name="CollisionShape" parent="Hitbox" index="0"]
 shape = SubResource( 9 )
 
+[node name="Explosion" parent="." instance=ExtResource( 3 )]
+transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, 0.103616, -4.52921e-09, 0 )
+
 [connection signal="body_shape_entered" from="." to="." method="_on_Chouchou_body_shape_entered"]
 [connection signal="area_entered" from="Hitbox" to="." method="_on_Hitbox_area_entered"]
 
 [editable path="Hitbox"]
+[editable path="Explosion"]
