@@ -128,16 +128,6 @@ tracks/0/keys = {
 "clips": PoolStringArray( "LeftMembers" ),
 "times": PoolRealArray( 0 )
 }
-tracks/1/type = "animation"
-tracks/1/path = NodePath("../Right/RightAnims")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"clips": PoolStringArray( "RightMembers" ),
-"times": PoolRealArray( 0 )
-}
 
 [sub_resource type="Animation" id=11]
 length = 0.001
@@ -203,21 +193,11 @@ tracks/0/keys = {
 "clips": PoolStringArray( "RunLEft" ),
 "times": PoolRealArray( 0 )
 }
-tracks/1/type = "animation"
-tracks/1/path = NodePath("../Right/RightAnims")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"clips": PoolStringArray( "RunRight" ),
-"times": PoolRealArray( 0 )
-}
 
 [sub_resource type="Animation" id=21]
 resource_name = "idle"
 tracks/0/type = "animation"
-tracks/0/path = NodePath("../Right/RightAnims")
+tracks/0/path = NodePath("LeftAnims")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -226,21 +206,12 @@ tracks/0/keys = {
 "clips": PoolStringArray(  ),
 "times": PoolRealArray(  )
 }
-tracks/1/type = "animation"
-tracks/1/path = NodePath("LeftAnims")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"clips": PoolStringArray(  ),
-"times": PoolRealArray(  )
-}
 
 [sub_resource type="BoxShape" id=22]
 
 [node name="Player" type="KinematicBody"]
 collision_layer = 2
+collision_mask = 33
 script = ExtResource( 2 )
 
 [node name="Body" type="MeshInstance" parent="."]

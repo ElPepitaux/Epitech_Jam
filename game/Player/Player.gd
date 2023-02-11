@@ -33,6 +33,7 @@ func _ready():
 func _physics_process(delta):
 	cam.rotation_degrees.x = look_rot.x
 	rotation_degrees.y = look_rot.y
+	print(stat.health)
 
 	if Input.is_action_pressed("shoot") and can_fire:
 		var bullet = bull.instance()

@@ -15,7 +15,7 @@ radius = 0.480858
 radius = 3.72344
 
 [sub_resource type="SphereShape" id=3]
-radius = 0.67365
+radius = 0.597973
 
 [sub_resource type="CapsuleShape" id=4]
 
@@ -25,19 +25,16 @@ script = ExtResource( 2 )
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
 transform = Transform( 2.87526, 0, 0, 0, 1.50734, 0, 0, 0, 2.16965, 0, 0.636326, 0 )
-visible = false
 shape = SubResource( 2 )
 
 [node name="spider" parent="." instance=ExtResource( 1 )]
 transform = Transform( 3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0 )
 
 [node name="Wander" parent="." instance=ExtResource( 6 )]
-visible = false
 wander_range = 100
 
 [node name="player_dection" type="Area" parent="."]
 transform = Transform( 7.39468, 0, 0, 0, 4.01323, 0, 0, 0, 7.07006, 0, 0, 0 )
-visible = false
 collision_layer = 0
 collision_mask = 2
 script = ExtResource( 3 )
@@ -51,7 +48,7 @@ collision_layer = 8
 collision_mask = 0
 
 [node name="CollisionShape" parent="HurtBox" index="0"]
-transform = Transform( 1, 0, 0, 0, 0.851997, 0, 0, 0, 1, 0, 0, 0 )
+transform = Transform( 0.838339, 0, 0, 0, 0.618461, 0, 0, 0, 0.805393, 0, 0.118346, 0 )
 shape = SubResource( 3 )
 
 [node name="Hitbox" parent="." instance=ExtResource( 5 )]
@@ -70,8 +67,6 @@ max_health = 4
 [connection signal="body_entered" from="player_dection" to="player_dection" method="_on_player_dection_body_entered"]
 [connection signal="body_exited" from="player_dection" to="player_dection" method="_on_player_dection_body_exited"]
 [connection signal="area_entered" from="HurtBox" to="." method="_on_HurtBox_area_entered"]
-[connection signal="area_entered" from="Hitbox" to="." method="_on_Hitbox_area_entered"]
-[connection signal="area_exited" from="Hitbox" to="." method="_on_Hitbox_area_exited"]
 [connection signal="no_health" from="Stats" to="." method="_on_Stats_no_health"]
 
 [editable path="spider"]

@@ -58,9 +58,6 @@ func _physics_process(delta):
 			if player != null:
 				look_at(player.global_transform.origin, Vector3.UP)
 				rotation_degrees.y += 180
-				if attack_player:
-					animation.play("Eat")
-					pass
 				var direction = global_transform.origin.direction_to(player.get_global_transform().origin)
 				
 				velocity = velocity.move_toward(direction * SPRINT, delta * ACCEL)
@@ -84,16 +81,9 @@ func _on_HurtBox_area_entered(area):
 	
 func _on_Stats_no_health():
 	stat = null
-	animation.play("Die")
+	velocity = Vector3.ZERO
+	animation.play("Die", 0.5)
 	
 func die_animation_finish():
 	queue_free()
 
-func _on_Hitbox_area_entered(area):
-	print("touch")
-	attack_player = true
-
-func _on_Hitbox_area_exited(area):
-	print("no touch")
-	attack_player = false
-	
