@@ -6,6 +6,7 @@ onready var button_settings = $VBoxContainer/Settings
 onready var button_mainmenu = $VBoxContainer/Main_Menu
 
 func _ready():
+	self.visible = false
 	var min_size = Vector2.UP
 	min_size.x = 960
 	min_size.y = 130
@@ -15,12 +16,16 @@ func _ready():
 	
 func _process(delta):
 	if Input.is_action_just_pressed("pause"):
+		if Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
+			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+		else:
+			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 		get_tree().paused = not get_tree().paused
 		self.visible = not self.visible
 
-
 func _on_Continue_pressed():
 	self.visible = false
+	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	get_tree().paused = false
 
 
