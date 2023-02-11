@@ -12,8 +12,6 @@ onready var hp_text = $Control/info/HP
 onready var ammo_text = $Control/info/Ammo
 onready var gun = $Right/RightArm/Weapon
 onready var rifle = $Right/RightArm/Rifle
-onready var stat_rifle = $Right/RightArm/Rifle/WeaponStats
-onready var stat_gun = $Right/RightArm/Weapon/WeaponStats
 onready var aie = $AieScreen
 
 export var speed = 5
@@ -37,6 +35,8 @@ var can_fire = true
 var hp_str = "HP : %d / 10"
 var ammo_str = "Ammo : %d / %d"
 var graps = 0
+var stat_gun = GunStats
+var stat_rifle = RifleStats
 onready var current = gun
 onready var cur_stat = stat_gun
 
