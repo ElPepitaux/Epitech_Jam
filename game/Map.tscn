@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 [gd_scene load_steps=13 format=2]
-=======
-[gd_scene load_steps=12 format=2]
->>>>>>> 1a5d69e8957a0bff28b6765dc1237cfc4513d39e
 
 [ext_resource path="res://asset/imfin.tscn" type="PackedScene" id=1]
 [ext_resource path="res://ligne.meshlib" type="MeshLibrary" id=2]
@@ -12,12 +8,8 @@
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=6]
 [ext_resource path="res://All_Enemy/enemy.tscn" type="PackedScene" id=7]
 [ext_resource path="res://blacksabbat.tscn" type="PackedScene" id=8]
-<<<<<<< HEAD
 [ext_resource path="res://Humvee.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Pneu.tscn" type="PackedScene" id=10]
-=======
-[ext_resource path="res://All_Enemy/Mobspawner.tscn" type="PackedScene" id=9]
->>>>>>> 1a5d69e8957a0bff28b6765dc1237cfc4513d39e
 
 [sub_resource type="PlaneMesh" id=1]
 
@@ -95,7 +87,6 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.15186, 0 )
 [node name="blacksabbat" parent="." instance=ExtResource( 8 )]
 transform = Transform( 0.999215, 0.0376086, -0.0124168, -0.0269335, 0.875112, 0.48317, 0.0290374, -0.482456, 0.875439, 97.5731, 4.79738, 41.5889 )
 
-<<<<<<< HEAD
 [node name="Humvee" parent="." instance=ExtResource( 9 )]
 transform = Transform( 0.586214, 0.145474, -4.3204, -0.0195594, 4.35999, 0.144153, 4.32281, 0, 0.586541, 79.5131, 4.46911, -57.4334 )
 
@@ -116,7 +107,3 @@ transform = Transform( 0.210598, 0, 0, 0, -0.00424873, 0.210555, 0, -0.210555, -
 
 [node name="Spatial8" parent="." instance=ExtResource( 10 )]
 transform = Transform( 0.210598, 0, 0, 0, -0.00424873, 0.210555, 0, -0.210555, -0.00424873, 77.5977, 6.28486, 43.5034 )
-=======
-[node name="Mob_spawner" parent="." instance=ExtResource( 9 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.22425, -88.3928 )
->>>>>>> 1a5d69e8957a0bff28b6765dc1237cfc4513d39e
