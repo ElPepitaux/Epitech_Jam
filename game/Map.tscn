@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://asset/imfin.tscn" type="PackedScene" id=1]
 [ext_resource path="res://ligne.meshlib" type="MeshLibrary" id=2]
@@ -14,6 +14,9 @@
 [ext_resource path="res://Cart.meshlib" type="MeshLibrary" id=12]
 [ext_resource path="res://Gate.gd" type="Script" id=13]
 [ext_resource path="res://Gate.tscn" type="PackedScene" id=14]
+[ext_resource path="res://segepi.tscn" type="PackedScene" id=15]
+[ext_resource path="res://shabbat.tscn" type="PackedScene" id=16]
+[ext_resource path="res://Truesabat.tscn" type="PackedScene" id=17]
 
 [sub_resource type="PlaneMesh" id=1]
 
@@ -27,7 +30,10 @@ albedo_texture = ExtResource( 11 )
 
 [sub_resource type="PlaneShape" id=4]
 
+[sub_resource type="PlaneShape" id=6]
+
 [node name="map" type="Spatial"]
+transform = Transform( 0.993673, 0, 0, 0, 0.993673, 0, 0, 0, 0.993673, 0, 0, 0 )
 
 [node name="MeshInstance" type="MeshInstance" parent="."]
 transform = Transform( 14.0404, 0, 0, 0, 4.62503, 0, 0, 0, -16.3434, 0, 0, 0 )
@@ -234,3 +240,19 @@ directional_shadow_max_distance = 8192.0
 [node name="Gate" parent="." instance=ExtResource( 14 )]
 transform = Transform( -0.120524, 0, 4.99899, 0, 3.97154, 0, -9.36255, 0, -0.156756, -226.205, 11.7156, -49.059 )
 script = ExtResource( 13 )
+
+[node name="Spatial19" parent="." instance=ExtResource( 15 )]
+transform = Transform( 0.0109212, 6.08383, 1.30088, -0.0510734, 1.30093, -6.08362, -6.22115, 0, 0.052228, -263.285, 138.616, -42.6596 )
+
+[node name="shabbat" parent="." instance=ExtResource( 16 )]
+transform = Transform( 2.09419, 1.19947, 1.09593, -0.746635, 2.29837, -1.08879, -1.44303, 0.551539, 2.15381, -220.833, 5.48779, 34.2165 )
+
+[node name="StaticBody" type="StaticBody" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -258.476, 26.2803, 0 )
+
+[node name="CollisionShape" type="CollisionShape" parent="StaticBody"]
+transform = Transform( 0.0676496, 0.997709, 0, -1.38689, 0.0940382, 0, 0, 0, 3.12716, 3.86217, 11.9546, 0 )
+shape = SubResource( 6 )
+
+[node name="Spatial20" parent="." instance=ExtResource( 17 )]
+transform = Transform( 1.4888, -1.24821, -0.188608, 0.016831, 0.263694, -1.61227, 0.646644, 0.751686, 0.129692, -227.279, 31.3635, -29.51 )
