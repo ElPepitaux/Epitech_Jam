@@ -14,7 +14,3 @@ albedo_texture = ExtResource( 1 )
 transform = Transform( 2.14795, 0, 0, 0, 1.12837, -1.8277, 0, 1.8277, 1.12837, 0, 0, 0 )
 mesh = SubResource( 1 )
 material/0 = SubResource( 2 )
-
-[node name="DirectionalLight" type="DirectionalLight" parent="."]
-transform = Transform( 1, 0, 0, 0, -0.0769453, 0.997035, 0, -0.997035, -0.0769453, -0.130132, 1.53276, -0.257992 )
-light_energy = 2.0
