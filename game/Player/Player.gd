@@ -20,6 +20,7 @@ export var min_angle = -80
 export var gravity = 90
 export var jump = 30
 export var max_jumps = 2
+export var max_graps = 3
 
 var stat = PlayerStats
 var look_rot = Vector3.ZERO
@@ -35,6 +36,7 @@ var nb_ammo = 0
 var nb_ammo_gun = 0
 var nb_ammo_rifle = 0
 var nb_ammo_full = 0
+var graps = 0
 
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
@@ -62,7 +64,6 @@ func _physics_process(delta):
 		can_fire = false
 		yield(get_tree().create_timer(0.5), "timeout")
 		can_fire = true
-		
 		bullet.queue_free()
 		
 	if Input.is_action_just_pressed("switch_weapon"):
