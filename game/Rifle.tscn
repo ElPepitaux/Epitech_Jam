@@ -137,3 +137,4 @@ transform = Transform( 0.003, 0, 0, 0, -2.66639e-09, -0.003, 0, 0.061, -1.31134e
 mesh = SubResource( 19 )
 
 [node name="Spawn" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 6.278 )
