@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://asset/imfin.tscn" type="PackedScene" id=1]
 [ext_resource path="res://ligne.meshlib" type="MeshLibrary" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://spawn.meshlib" type="MeshLibrary" id=5]
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=6]
 [ext_resource path="res://All_Enemy/enemy.tscn" type="PackedScene" id=7]
+[ext_resource path="res://blacksabbat.tscn" type="PackedScene" id=8]
 
 [sub_resource type="PlaneMesh" id=1]
 
@@ -80,3 +81,6 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 23.2484, 0 )
 
 [node name="enemy" parent="." instance=ExtResource( 7 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.15186, 0 )
+
+[node name="blacksabbat" parent="." instance=ExtResource( 8 )]
+transform = Transform( 0.999215, 0.0376086, -0.0124168, -0.0269335, 0.875112, 0.48317, 0.0290374, -0.482456, 0.875439, 97.5731, 6.79738, 41.5889 )
