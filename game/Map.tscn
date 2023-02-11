@@ -49,7 +49,7 @@ __meta__ = {
 }
 
 [node name="Spatial" parent="." instance=ExtResource( 1 )]
-transform = Transform( 3.05337, 0, 0, 0, 3.05337, 0, 0, 0, 3.05337, 95.7107, 6.09353, 29.4674 )
+transform = Transform( 3.05337, 0, 0, 0, 3.05337, 0, 0, 0, 3.05337, 95.7107, 4.09353, 29.4674 )
 
 [node name="Spatial5" parent="." instance=ExtResource( 1 )]
 transform = Transform( 3.05337, 0, 0, 0, 3.05337, 0, 0, 0, 3.05337, -111.645, -6.83722, -143.085 )
@@ -83,4 +83,4 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 23.2484, 0 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.15186, 0 )
 
 [node name="blacksabbat" parent="." instance=ExtResource( 8 )]
-transform = Transform( 0.999215, 0.0376086, -0.0124168, -0.0269335, 0.875112, 0.48317, 0.0290374, -0.482456, 0.875439, 97.5731, 6.79738, 41.5889 )
+transform = Transform( 0.999215, 0.0376086, -0.0124168, -0.0269335, 0.875112, 0.48317, 0.0290374, -0.482456, 0.875439, 97.5731, 4.79738, 41.5889 )
