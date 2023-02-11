@@ -30,7 +30,7 @@ albedo_texture = ExtResource( 11 )
 
 [sub_resource type="PlaneShape" id=4]
 
-[sub_resource type="PlaneShape" id=6]
+[sub_resource type="BoxShape" id=6]
 
 [node name="map" type="Spatial"]
 transform = Transform( 0.993673, 0, 0, 0, 0.993673, 0, 0, 0, 0.993673, 0, 0, 0 )
@@ -93,6 +93,12 @@ transform = Transform( 2.70471, -1.08159, 0.915289, 1.14454, 2.83049, -0.0373852
 [node name="Spatial6" parent="." instance=ExtResource( 1 )]
 transform = Transform( 0.736204, -2.34149, 1.81617, 2.91279, 0.915828, 0, -0.544742, 1.73255, 2.4545, -87.9605, -6.83721, -108.349 )
 
+[node name="Spatial21" parent="." instance=ExtResource( 1 )]
+transform = Transform( 2.65898, -0.883254, 1.21358, 1.39864, 2.35397, -1.35118, -0.544742, 1.73255, 2.4545, -170.613, 1.35329, -102.392 )
+
+[node name="Spatial22" parent="." instance=ExtResource( 1 )]
+transform = Transform( 0.144601, 0.394112, 3.02437, -0.266592, 3.01781, -0.380512, -3.03827, -0.246042, 0.177326, -176.297, -5.00764, 47.9898 )
+
 [node name="Spatial18" parent="." instance=ExtResource( 1 )]
 transform = Transform( 0.734482, -2.33837, 1.82088, 2.35923, 1.59673, 1.09889, -1.79378, 1.14259, 2.19087, -197.266, -9.21088, 34.9107 )
 
@@ -142,6 +148,15 @@ transform = Transform( 0.586214, 0.145474, -4.3204, -0.0195594, 4.35999, 0.14415
 [node name="Humvee2" parent="." instance=ExtResource( 9 )]
 transform = Transform( 4.08207, 0.0691328, -1.53709, -0.0195594, 4.35999, 0.144153, 1.53852, -0.127997, 4.08011, -69.2706, 4.46911, -44.8801 )
 
+[node name="Humvee3" parent="." instance=ExtResource( 9 )]
+transform = Transform( -2.03121, 0.118472, -3.85887, -0.0195594, 4.35999, 0.144153, 3.86064, 0.0844212, -2.02954, -158.815, 4.46911, -10.6941 )
+
+[node name="Humvee4" parent="." instance=ExtResource( 9 )]
+transform = Transform( 3.60451, 0.0973504, -2.45535, -0.0195594, 4.35999, 0.144153, 2.4572, -0.108099, 3.60295, -158.815, 4.46911, -68.8235 )
+
+[node name="Humvee5" parent="." instance=ExtResource( 9 )]
+transform = Transform( -0.817449, 0.137937, -4.28293, -0.0195594, 4.35999, 0.144153, 4.2851, 0.046215, -0.816375, -158.815, 4.46911, -41.4403 )
+
 [node name="Spatial7" parent="." instance=ExtResource( 10 )]
 transform = Transform( 0.210598, 0, 0, 0, -0.00424873, 0.210555, 0, -0.210555, -0.00424873, 35.5175, 5.34811, -8.56033 )
 
@@ -169,14 +184,14 @@ transform = Transform( -0.142905, 0.0335778, -1.08216e-08, 0.00480307, 0.999035,
 shape = SubResource( 4 )
 
 [node name="MeshInstance6" type="MeshInstance" parent="."]
-transform = Transform( -168.04, -1.46905e-05, -7.34526e-06, 6.23895e-06, 2.72713e-13, -142.731, 1.24779e-05, -142.731, 2.72713e-13, -308.263, 16.3948, 96.343 )
+transform = Transform( -198.783, -1.73781e-05, -8.68908e-06, 7.38037e-06, 3.22606e-13, -168.844, 1.24779e-05, -142.731, 2.72713e-13, -308.263, 16.3948, 96.343 )
 mesh = SubResource( 3 )
 material/0 = SubResource( 5 )
 
 [node name="StaticBody" type="StaticBody" parent="MeshInstance6"]
 
 [node name="CollisionShape" type="CollisionShape" parent="MeshInstance6/StaticBody"]
-transform = Transform( -0.142905, 0.0335778, -1.08216e-08, 0.00480307, 0.999035, -2.30446e-09, 1.09545e-08, -1.90182e-08, -0.14016, 0, 0, 0 )
+transform = Transform( -0.114155, 0.0268225, -8.64446e-09, 0.000444657, 0.0924901, -2.13346e-10, 8.75063e-09, -1.51921e-08, -0.111962, -0.00155938, -0.0033465, -0.000813894 )
 shape = SubResource( 4 )
 
 [node name="MeshInstance5" type="MeshInstance" parent="."]
@@ -242,17 +257,17 @@ transform = Transform( -0.120524, 0, 4.99899, 0, 3.97154, 0, -9.36255, 0, -0.156
 script = ExtResource( 13 )
 
 [node name="Spatial19" parent="." instance=ExtResource( 15 )]
-transform = Transform( 0.0109212, 6.08383, 1.30088, -0.0510734, 1.30093, -6.08362, -6.22115, 0, 0.052228, -263.285, 138.616, -42.6596 )
+transform = Transform( -0.0705227, 6.05221, 1.43917, -0.392827, 1.43206, -6.04155, -6.20856, -0.159356, 0.365913, -263.285, 138.616, -42.6596 )
 
 [node name="shabbat" parent="." instance=ExtResource( 16 )]
 transform = Transform( 2.09419, 1.19947, 1.09593, -0.746635, 2.29837, -1.08879, -1.44303, 0.551539, 2.15381, -220.833, 5.48779, 34.2165 )
 
-[node name="StaticBody" type="StaticBody" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -258.476, 26.2803, 0 )
-
-[node name="CollisionShape" type="CollisionShape" parent="StaticBody"]
-transform = Transform( 0.0676496, 0.997709, 0, -1.38689, 0.0940382, 0, 0, 0, 3.12716, 3.86217, 11.9546, 0 )
-shape = SubResource( 6 )
-
 [node name="Spatial20" parent="." instance=ExtResource( 17 )]
 transform = Transform( 1.4888, -1.24821, -0.188608, 0.016831, 0.263694, -1.61227, 0.646644, 0.751686, 0.129692, -227.279, 31.3635, -29.51 )
+
+[node name="StaticBody" type="StaticBody" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -252.85, 29.2613, 0 )
+
+[node name="CollisionShape" type="CollisionShape" parent="StaticBody"]
+transform = Transform( 1, 0, 0, 0, 16.2744, 0, 0, 0, 31.77, 0, 14.3753, 0 )
+shape = SubResource( 6 )
