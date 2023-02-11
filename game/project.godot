@@ -18,11 +18,7 @@ PlayerStats="*res://Player/PlayerStats.tscn"
 
 [display]
 
-window/size/width=1920
-window/size/height=1080
 window/size/fullscreen=true
-window/size/test_width=1920
-window/size/test_height=1080
 
 [gui]
 
@@ -78,8 +74,6 @@ quit={
 3d_physics/layer_3="Enemy"
 3d_physics/layer_4="EnemHurtBox"
 3d_physics/layer_5="PLayerHurtBox"
-3d_physics/layer_6="Items"
-3d_physics/layer_7="SoftCollision"
 
 [physics]
 
