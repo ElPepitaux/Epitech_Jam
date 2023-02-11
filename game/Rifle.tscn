@@ -1,6 +1,7 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://Rifle.gd" type="Script" id=1]
+[ext_resource path="res://WeaponStats.tscn" type="PackedScene" id=2]
 
 [sub_resource type="CylinderMesh" id=1]
 
@@ -137,4 +138,7 @@ transform = Transform( 0.003, 0, 0, 0, -2.66639e-09, -0.003, 0, 0.061, -1.31134e
 mesh = SubResource( 19 )
 
 [node name="Spawn" type="Spatial" parent="."]
-transform = Transform( 1, -8.74228e-08, 8.74228e-08, 8.74228e-08, 1, 8.74228e-08, -8.74228e-08, -8.74228e-08, 1, 0, 0.0987602, 1.02737 )
+transform = Transform( 1, -8.74228e-08, 8.74228e-08, 8.74228e-08, 1, 8.74228e-08, -8.74228e-08, -8.74228e-08, 1, 0, 0.0987602, 0.993593 )
+
+[node name="WeaponStats" parent="." instance=ExtResource( 2 )]
+max_ammo = 5
