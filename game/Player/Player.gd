@@ -52,6 +52,7 @@ func _physics_process(delta):
 		cur_stat.ammo -= 1
 		var bullet = bull.instance()
 		bullet.damage = cur_stat.damage
+		bullet.speed = cur_stat.SPEED
 		spawn.add_child(bullet)
 		bullet.look_at(global_transform.origin, Vector3.UP)
 		bullet.rotation_degrees.x += 200

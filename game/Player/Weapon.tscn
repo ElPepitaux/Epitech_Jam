@@ -67,5 +67,5 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 8.37816 )
 
 [node name="WeaponStats" parent="." instance=ExtResource( 2 )]
 max_ammo = 20
-SPEED = 100
+SPEED = 350
 damage = 2
