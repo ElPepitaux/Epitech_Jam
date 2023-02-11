@@ -87,7 +87,7 @@ func _physics_process(delta):
 		is_up = 0
 	if not is_on_floor():
 		velocity.y -= gravity * delta
-	if Input.is_action_pressed("sprint") and is_on_floor():
+	if Input.is_action_pressed("sprint"):
 		sprint = 4
 	else:
 		sprint = 1

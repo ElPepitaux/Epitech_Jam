@@ -1,137 +1,92 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=15 format=2]
 
 [sub_resource type="CylinderMesh" id=1]
 
 [sub_resource type="SpatialMaterial" id=2]
-albedo_color = Color( 0.0392157, 0.0392157, 0.0392157, 1 )
+albedo_color = Color( 0.254902, 0.254902, 0.254902, 1 )
 
 [sub_resource type="CubeMesh" id=3]
 
 [sub_resource type="SpatialMaterial" id=4]
-albedo_color = Color( 0, 0, 0, 1 )
+albedo_color = Color( 0.254902, 0.254902, 0.254902, 1 )
 
-[sub_resource type="CubeMesh" id=5]
+[sub_resource type="CylinderMesh" id=5]
 
 [sub_resource type="SpatialMaterial" id=6]
-albedo_color = Color( 0, 0, 0, 1 )
+albedo_color = Color( 0.254902, 0.254902, 0.254902, 1 )
 
-[sub_resource type="CubeMesh" id=7]
+[sub_resource type="SpatialMaterial" id=7]
+albedo_color = Color( 0.254902, 0.254902, 0.254902, 1 )
 
 [sub_resource type="CubeMesh" id=8]
 
-[sub_resource type="CubeMesh" id=9]
+[sub_resource type="SpatialMaterial" id=9]
+albedo_color = Color( 0.254902, 0.254902, 0.254902, 1 )
 
 [sub_resource type="SpatialMaterial" id=10]
-albedo_color = Color( 0, 0, 0, 1 )
+albedo_color = Color( 0.254902, 0.254902, 0.254902, 1 )
 
 [sub_resource type="CubeMesh" id=11]
-material = SubResource( 10 )
 
-[sub_resource type="CapsuleMesh" id=12]
+[sub_resource type="SpatialMaterial" id=12]
+albedo_color = Color( 0.223529, 0.337255, 0.25098, 1 )
 
-[sub_resource type="SpatialMaterial" id=13]
-albedo_color = Color( 0, 0, 0, 1 )
+[sub_resource type="PrismMesh" id=13]
 
 [sub_resource type="SpatialMaterial" id=14]
-albedo_color = Color( 0, 0, 0, 1 )
-
-[sub_resource type="CubeMesh" id=15]
-material = SubResource( 14 )
-
-[sub_resource type="SpatialMaterial" id=16]
-albedo_color = Color( 0, 0, 0, 1 )
-
-[sub_resource type="CubeMesh" id=17]
-material = SubResource( 16 )
-
-[sub_resource type="SpatialMaterial" id=18]
-albedo_color = Color( 0.0509804, 0.0509804, 0.0509804, 1 )
-
-[sub_resource type="CylinderMesh" id=19]
-material = SubResource( 18 )
+albedo_color = Color( 0.223529, 0.337255, 0.25098, 1 )
 
 [node name="Rifle" type="Spatial"]
 
+[node name="Spawn" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.75012, 25.7783 )
+
 [node name="Canon" type="MeshInstance" parent="."]
-transform = Transform( 0.01, 0, 0, 0, -1.49493e-08, -0.01, 0, 0.342, -4.37114e-10, 0, 0.096, -0.023 )
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 12.0202, -5.25422e-07, 0, 0, 12.4486 )
 mesh = SubResource( 1 )
 material/0 = SubResource( 2 )
 
-[node name="Poignée de tir" type="MeshInstance" parent="."]
-transform = Transform( 0.01, 0, 0, 0, 0.0386049, -0.00336783, 0, 0.0138081, 0.00941582, 0, 0.057, -0.281 )
+[node name="Bout" type="MeshInstance" parent="."]
+transform = Transform( 1.83146, 0, 0, 0, 1.01206, 0, 0, 0, 0.299089, 0, 0, 24.7642 )
 mesh = SubResource( 3 )
 material/0 = SubResource( 4 )
 
-[node name="Chargeur" type="MeshInstance" parent="."]
-transform = Transform( 0.005, 0, 0, 0, 0.0414678, 0.00343932, 0, -0.0113762, 0.0125368, 0, 0.0574354, -0.145619 )
-mesh = SubResource( 3 )
-material/0 = SubResource( 4 )
+[node name="Viseur" type="Spatial" parent="."]
 
-[node name="Le truc la" type="Spatial" parent="."]
-
-[node name="MeshInstance" type="MeshInstance" parent="Le truc la"]
-transform = Transform( 0.01, 0, 0, 0, 0.000941023, -0.00304509, 0, 0.000338344, 0.0084692, 0, 0.0670199, -0.265 )
+[node name="MeshInstance2" type="MeshInstance" parent="Viseur"]
+transform = Transform( 1.09178, 0, 0, 0, -4.7723e-08, -1.09178, 0, 2.04317, -8.931e-08, 0, 2.6246, 4.91723 )
 mesh = SubResource( 5 )
 skeleton = NodePath("../..")
 material/0 = SubResource( 6 )
 
-[node name="MeshInstance2" type="MeshInstance" parent="Le truc la"]
-transform = Transform( 0.01, 0, 0, 0, 0.000993731, 0.00100619, 0, -0.000111798, 0.00894358, 0, 0.065, -0.248242 )
-mesh = SubResource( 7 )
+[node name="MeshInstance3" type="MeshInstance" parent="Viseur"]
+transform = Transform( 0.9, 0, 0, 0, -1.14218e-07, -0.9, 0, 2.613, -3.93403e-08, 0, 2.6246, 1.55691 )
+mesh = SubResource( 5 )
 skeleton = NodePath("../..")
-material/0 = SubResource( 6 )
+material/0 = SubResource( 7 )
 
-[node name="MeshInstance3" type="MeshInstance" parent="Le truc la"]
-transform = Transform( 0.01, 0, 0, 0, -0.000807496, 0.00530886, 0, 0.000589873, 0.00726746, 0, 0.0706434, -0.232941 )
+[node name="MeshInstance5" type="MeshInstance" parent="Viseur"]
+transform = Transform( 0.507785, 0, 0, 0, 1, 0, 0, 0, 1.94465, 0, 1.43455, 0.265968 )
 mesh = SubResource( 8 )
 skeleton = NodePath("../..")
-material/0 = SubResource( 6 )
+material/0 = SubResource( 9 )
 
-[node name="MeshInstance4" type="MeshInstance" parent="Le truc la"]
-transform = Transform( 0.01, 0, 0, 0, 0.000551631, -0.00834088, 0, -0.000834088, -0.00551631, 0, 0.084, -0.22 )
-mesh = SubResource( 9 )
+[node name="MeshInstance6" type="MeshInstance" parent="Viseur"]
+transform = Transform( 1.1, 0, 0, 0, -4.80825e-08, -1.1, 0, 0.696802, -3.04582e-08, 0, 2.6246, -1.74359 )
+mesh = SubResource( 5 )
 skeleton = NodePath("../..")
-material/0 = SubResource( 6 )
+material/0 = SubResource( 10 )
 
-[node name="Queue de detente" type="MeshInstance" parent="."]
-transform = Transform( -0.004, 8.74228e-10, 0, 3.43672e-10, 0.00982787, -0.00018474, -6.46021e-11, -0.0018474, -0.000982787, 0, 0.081, -0.252985 )
+[node name="Corps" type="Spatial" parent="."]
+
+[node name="MeshInstance4" type="MeshInstance" parent="Corps"]
+transform = Transform( 1, 0, 0, 0, 1.11612, 0, 0, 0, 4.235, 0, 0, -0.909854 )
 mesh = SubResource( 11 )
-
-[node name="Poignée avant" type="MeshInstance" parent="."]
-transform = Transform( 0.008, 0, 0, 0, 0.009, 0, 0, 0, 0.022, 0, 0.0870385, -0.0436918 )
-mesh = SubResource( 12 )
-material/0 = SubResource( 13 )
-
-[node name="Crosse d\'épaule" type="Spatial" parent="."]
-
-[node name="Crosse d\'épaule" type="MeshInstance" parent="Crosse d\'épaule"]
-transform = Transform( 0.006, 0, 0, 0, 0.006, 0, 0, 0, 0.035, 0, 0.0962985, -0.383332 )
-mesh = SubResource( 15 )
 skeleton = NodePath("../..")
+material/0 = SubResource( 12 )
 
-[node name="Crosse d\'épaule2" type="MeshInstance" parent="Crosse d\'épaule"]
-transform = Transform( 0.006, 0, 0, 0, -0.000288078, 0.0209758, 0, -0.00599308, -0.00100827, 0, 0.081, -0.411819 )
-mesh = SubResource( 15 )
+[node name="MeshInstance7" type="MeshInstance" parent="Corps"]
+transform = Transform( -1.84732e-08, 3.9616e-08, 1, 2.69094, 1.25481, 0, -1.93055, 4.14007, -1.99677e-07, 0, -0.140055, -6.44109 )
+mesh = SubResource( 13 )
 skeleton = NodePath("../..")
-
-[node name="Crosse d\'épaule3" type="MeshInstance" parent="Crosse d\'épaule"]
-transform = Transform( 0.006, 0, 0, 0, 0.00517227, 0.0177391, 0, -0.00304099, 0.0301716, 7.45058e-09, 0.0731721, -0.384188 )
-mesh = SubResource( 15 )
-skeleton = NodePath("../..")
-
-[node name="Lunette de visée" type="Spatial" parent="."]
-
-[node name="Pied 1" type="MeshInstance" parent="Lunette de visée"]
-transform = Transform( 0.002, 0, 0, 0, -0.005, -3.49691e-10, 0, 4.37114e-10, -0.004, 0, 0.108, -0.171 )
-mesh = SubResource( 17 )
-
-[node name="Pied 2" type="MeshInstance" parent="Lunette de visée"]
-transform = Transform( 0.002, 0, 0, 0, -0.005, -3.49691e-10, 0, 4.37114e-10, -0.004, 0, 0.108, -0.231696 )
-mesh = SubResource( 17 )
-
-[node name="MeshInstance" type="MeshInstance" parent="Lunette de visée"]
-transform = Transform( 0.003, 0, 0, 0, -2.66639e-09, -0.003, 0, 0.061, -1.31134e-10, 0, 0.114124, -0.201757 )
-mesh = SubResource( 19 )
-
-[node name="Spawn" type="Spatial" parent="."]
-transform = Transform( 1, -8.74228e-08, 8.74228e-08, 8.74228e-08, 1, 8.74228e-08, -8.74228e-08, -8.74228e-08, 1, 0, 0.0989025, 1.15263 )
+material/0 = SubResource( 14 )

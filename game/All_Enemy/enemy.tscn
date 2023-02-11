@@ -69,7 +69,7 @@ transform = Transform( 0.782999, 0, 0, 0, 1.01984, 0, 0, 0, 0.698043, 0, 0.83492
 shape = SubResource( 4 )
 
 [node name="Stats" parent="." instance=ExtResource( 7 )]
-max_health = 8
+max_health = 4
 
 [node name="softCollision" parent="." instance=ExtResource( 8 )]
 collision_layer = 64

@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://asset/imfin.tscn" type="PackedScene" id=1]
 [ext_resource path="res://ligne.meshlib" type="MeshLibrary" id=2]
@@ -12,6 +12,8 @@
 [ext_resource path="res://Pneu.tscn" type="PackedScene" id=10]
 [ext_resource path="res://asset/wall.jpg" type="Texture" id=11]
 [ext_resource path="res://Cart.meshlib" type="MeshLibrary" id=12]
+[ext_resource path="res://Gate.gd" type="Script" id=13]
+[ext_resource path="res://Gate.tscn" type="PackedScene" id=14]
 
 [sub_resource type="PlaneMesh" id=1]
 
@@ -214,3 +216,21 @@ material/0 = SubResource( 5 )
 [node name="CollisionShape" type="CollisionShape" parent="MeshInstance4/StaticBody"]
 transform = Transform( -0.142905, 0.0335778, -1.08216e-08, 0.00480307, 0.999035, -2.30446e-09, 1.09545e-08, -1.90182e-08, -0.14016, 0, 0, 0 )
 shape = SubResource( 4 )
+
+[node name="red" type="DirectionalLight" parent="."]
+transform = Transform( -0.432152, 0.314364, -0.845234, 0.0828385, 0.947149, 0.309915, 0.897988, 0.0639123, -0.435354, -536.977, 161.65, -147.283 )
+light_color = Color( 0.819608, 0, 0, 1 )
+light_energy = 10.0
+shadow_enabled = true
+directional_shadow_max_distance = 4228.3
+
+[node name="blue" type="DirectionalLight" parent="."]
+transform = Transform( 0.305507, 0.271874, -0.912551, 0.0828385, 0.947149, 0.309915, 0.94858, -0.170275, 0.266839, -512.225, 167.9, -91.5896 )
+light_color = Color( 0.0313726, 0.113725, 0.435294, 1 )
+light_energy = 0.892
+shadow_enabled = true
+directional_shadow_max_distance = 8192.0
+
+[node name="Gate" parent="." instance=ExtResource( 14 )]
+transform = Transform( -0.120524, 0, 4.99899, 0, 3.97154, 0, -9.36255, 0, -0.156756, -226.205, 11.7156, -49.059 )
+script = ExtResource( 13 )

@@ -4,6 +4,7 @@ export var damage = 50
 export var speed = 200
 
 onready var hitbox = $Hitbox/CollisionShape
+onready var hit = $Hitbox
 onready var explosion = $Explosion
 onready var animation = $Explosion/AnimationPlayer
 
@@ -13,6 +14,7 @@ func _ready():
 	
 	
 func shoot(delta):
+	hit.damage = damage
 	apply_impulse(transform.basis.z, -transform.basis.z * speed)
 
 
