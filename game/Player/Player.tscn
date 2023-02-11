@@ -128,16 +128,6 @@ tracks/0/keys = {
 "clips": PoolStringArray( "LeftMembers" ),
 "times": PoolRealArray( 0 )
 }
-tracks/1/type = "animation"
-tracks/1/path = NodePath("../Right/RightAnims")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"clips": PoolStringArray( "RightMembers" ),
-"times": PoolRealArray( 0 )
-}
 
 [sub_resource type="Animation" id=11]
 length = 0.001
@@ -203,21 +193,11 @@ tracks/0/keys = {
 "clips": PoolStringArray( "RunLEft" ),
 "times": PoolRealArray( 0 )
 }
-tracks/1/type = "animation"
-tracks/1/path = NodePath("../Right/RightAnims")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"clips": PoolStringArray( "RunRight" ),
-"times": PoolRealArray( 0 )
-}
 
 [sub_resource type="Animation" id=21]
 resource_name = "idle"
 tracks/0/type = "animation"
-tracks/0/path = NodePath("../Right/RightAnims")
+tracks/0/path = NodePath("LeftAnims")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -226,21 +206,12 @@ tracks/0/keys = {
 "clips": PoolStringArray(  ),
 "times": PoolRealArray(  )
 }
-tracks/1/type = "animation"
-tracks/1/path = NodePath("LeftAnims")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"clips": PoolStringArray(  ),
-"times": PoolRealArray(  )
-}
 
 [sub_resource type="BoxShape" id=22]
 
 [node name="Player" type="KinematicBody"]
 collision_layer = 2
+collision_mask = 33
 script = ExtResource( 2 )
 
 [node name="Body" type="MeshInstance" parent="."]
@@ -346,7 +317,9 @@ anims/idle_right = SubResource( 20 )
 
 [node name="Camera" type="Camera" parent="."]
 transform = Transform( -1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 1.99634, 1.15801 )
+current = true
 fov = 96.2492
+far = 8192.0
 
 [node name="Cast" type="RayCast" parent="Camera"]
 enabled = true
@@ -374,6 +347,52 @@ collision_mask = 0
 [node name="CollisionShape" parent="HurtBox" index="0"]
 transform = Transform( 1.94407, 0, 0, 0, 2.69185, 0, 0, 0, 1, 0, 0.526036, 0 )
 shape = SubResource( 22 )
+
+[node name="Control" type="Control" parent="."]
+margin_right = 160.0
+margin_bottom = 48.0
+
+[node name="info" type="ColorRect" parent="Control"]
+anchor_top = 22.5
+anchor_bottom = 22.5
+margin_left = 1.0
+margin_top = -92.0001
+margin_right = 256.0
+margin_bottom = -0.00012207
+color = Color( 1, 1, 1, 0.572549 )
+
+[node name="HP" type="Label" parent="Control/info"]
+margin_left = 93.0
+margin_right = 255.0
+margin_bottom = 44.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "HP : 10 / 10"
+align = 1
+valign = 1
+
+[node name="Ammo" type="Label" parent="Control/info"]
+margin_left = 92.0
+margin_top = 47.0
+margin_right = 254.0
+margin_bottom = 92.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Ammo : 10 /10"
+align = 1
+valign = 1
+
+[node name="ColorRect" type="ColorRect" parent="Control/info"]
+margin_left = -1.0
+margin_top = -1.0
+margin_right = 92.0
+margin_bottom = 92.0
+color = Color( 0, 0, 0, 0.686275 )
+
+[node name="aim" type="ColorRect" parent="Control"]
+margin_left = 957.0
+margin_top = 537.0
+margin_right = 963.0
+margin_bottom = 543.0
+color = Color( 0, 0, 0, 1 )
 
 [connection signal="area_entered" from="HurtBox" to="." method="_on_HurtBox_area_entered"]
 
