@@ -11,6 +11,8 @@ onready var hp_text = $Control/info/HP
 onready var ammo_text = $Control/info/Ammo
 onready var gun = $Right/RightArm/Weapon
 onready var rifle = $Right/RightArm/Rifle
+onready var stat_rifle = $Right/RightArm/Rifle/WeaponStats
+onready var stat_gun = $Right/RightArm/Weapon/WeaponStats
 
 export var speed = 5
 export var acceleration = 8
@@ -20,6 +22,7 @@ export var min_angle = -80
 export var gravity = 90
 export var jump = 30
 export var max_jumps = 2
+export var max_graps = 3
 
 var stat = PlayerStats
 var look_rot = Vector3.ZERO
@@ -31,29 +34,24 @@ var is_up = 0
 var can_fire = true
 var hp_str = "HP : %d / 10"
 var ammo_str = "Ammo : %d / %d"
-var nb_ammo = 0
-var nb_ammo_gun = 0
-var nb_ammo_rifle = 0
-var nb_ammo_full = 0
+var graps = 0
+onready var current = gun
+onready var cur_stat = stat_gun
 
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	arm.rotation_degrees.x = 90
-	nb_ammo = gun.get_ammo()
-	nb_ammo_gun = gun.get_ammo()
-	nb_ammo_rifle = rifle.get_ammo()
-	nb_ammo_full = gun.get_ammo()
 	rifle.visible = false
-
 
 func _physics_process(delta):
 	update_text()
 	cam.rotation_degrees.x = look_rot.x
 	rotation_degrees.y = look_rot.y
 
-	if Input.is_action_pressed("shoot") and can_fire and nb_ammo > 0:
-		nb_ammo -= 1
+	if Input.is_action_pressed("shoot") and can_fire and cur_stat.ammo > 0:
+		cur_stat.ammo -= 1
 		var bullet = bull.instance()
+		bullet.damage = cur_stat.damage
 		spawn.add_child(bullet)
 		bullet.look_at(global_transform.origin, Vector3.UP)
 		bullet.rotation_degrees.x += 200
@@ -62,15 +60,18 @@ func _physics_process(delta):
 		can_fire = false
 		yield(get_tree().create_timer(0.5), "timeout")
 		can_fire = true
-		
 		bullet.queue_free()
 		
 	if Input.is_action_just_pressed("switch_weapon"):
 		if gun.visible:
 			use_rifle()
+			current = rifle
+			cur_stat = stat_rifle
 		else:
 			use_gun()
-		
+			current = gun
+			cur_stat = stat_gun
+
 	if Input.is_action_pressed("forward") or Input.is_action_pressed("backward") or Input.is_action_pressed("right") or Input.is_action_pressed("left"):
 		if Input.is_action_pressed("sprint"):
 			anim.current_animation = "Run"
@@ -115,20 +116,14 @@ func _on_HurtBox_area_entered(area):
 
 func update_text():
 	hp_text.text = hp_str % stat.health
-	ammo_text.text = ammo_str % [nb_ammo, nb_ammo_full]
+	ammo_text.text = ammo_str % [cur_stat.ammo, cur_stat.max_ammo]
 	
 func use_gun():
-	nb_ammo_rifle = nb_ammo
 	spawn = $Right/RightArm/Weapon/Spawn
-	nb_ammo = nb_ammo_gun
 	rifle.visible = false
 	gun.visible = true
-	nb_ammo_full = gun.get_ammo()
 	
 func use_rifle():
-	nb_ammo_gun = nb_ammo
 	spawn = $Right/RightArm/Rifle/Spawn
-	nb_ammo = nb_ammo_rifle
 	gun.visible = false
 	rifle.visible = true
-	nb_ammo_full = rifle.get_ammo()

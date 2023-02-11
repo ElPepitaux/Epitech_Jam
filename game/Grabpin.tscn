@@ -1,4 +1,6 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://Grabpin.gd" type="Script" id=1]
 
 [sub_resource type="CapsuleMesh" id=1]
 
@@ -26,6 +28,7 @@ albedo_color = Color( 0.756863, 0.815686, 0.0588235, 1 )
 
 [node name="Grabpin" type="Spatial"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.56323, 0 )
+script = ExtResource( 1 )
 
 [node name="MeshInstance" type="MeshInstance" parent="."]
 transform = Transform( 0.912393, 0, 0, 0, 0.912393, 0, 0, 0, 1.43223, 0, 0, 0 )
@@ -37,22 +40,26 @@ transform = Transform( 0.841073, 0, 0, 0, 0.841073, 0, 0, 0, 0.841073, 0, 0, 1.3
 mesh = SubResource( 3 )
 material/0 = SubResource( 4 )
 
-[node name="MeshInstance3" type="MeshInstance" parent="."]
+[node name="Head" type="MeshInstance" parent="."]
 transform = Transform( 0.536869, 0, 0, 0, -0.0151308, -0.536655, 0, 0.536655, -0.0151308, 0, 1.19209e-07, -2.33797 )
 mesh = SubResource( 3 )
 material/0 = SubResource( 5 )
 
-[node name="MeshInstance" type="MeshInstance" parent="MeshInstance3"]
+[node name="MeshInstance" type="MeshInstance" parent="Head"]
 transform = Transform( 0.928667, -0.0105701, -0.370763, -0.0104536, -0.999942, 0.00232371, -0.370766, 0.00171786, -0.928724, 0, -1.97004, 0.0555446 )
 mesh = SubResource( 6 )
 material/0 = SubResource( 7 )
 
-[node name="MeshInstance2" type="MeshInstance" parent="MeshInstance3"]
+[node name="MeshInstance2" type="MeshInstance" parent="Head"]
 transform = Transform( 0.475102, -0.0250757, -0.879573, -0.0247994, -0.999577, 0.0151015, -0.87958, 0.0146381, -0.475523, 0, -1.97004, 0.0555453 )
 mesh = SubResource( 6 )
 material/0 = SubResource( 8 )
 
-[node name="MeshInstance3" type="MeshInstance" parent="MeshInstance3"]
+[node name="MeshInstance3" type="MeshInstance" parent="Head"]
 transform = Transform( -0.684012, -0.0207879, -0.729173, -0.0205589, -0.998646, 0.0477559, -0.72918, 0.0476567, 0.682659, 0, -1.97004, 0.0555463 )
 mesh = SubResource( 6 )
 material/0 = SubResource( 9 )
+
+[node name="RayCast" type="RayCast" parent="Head"]
+enabled = true
+cast_to = Vector3( 0, -500, 0 )

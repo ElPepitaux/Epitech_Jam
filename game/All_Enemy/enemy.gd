@@ -92,8 +92,7 @@ func _on_Stats_no_health():
 func die_animation_finish():
 	var ammo = lot_2.instance()
 	ammo.global_transform = global_transform
-
-	print(ammo.global_transform)
+	print(ammo.global_transform.origin)
 	map.add_child(ammo)
 	queue_free()
 	
