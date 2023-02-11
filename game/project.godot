@@ -12,6 +12,10 @@ config_version=4
 
 config/name="mmmmmmh godoooot"
 
+[autoload]
+
+PlayerStats="*res://Player/PlayerStats.tscn"
+
 [display]
 
 window/size/fullscreen=true

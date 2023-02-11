@@ -21,7 +21,6 @@ mesh = SubResource( 1 )
 material/0 = SubResource( 2 )
 
 [node name="GridMap3" type="GridMap" parent="MeshInstance"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
 mesh_library = ExtResource( 2 )
 data = {
 "cells": PoolIntArray( 0, 1, 0, 1, 1, 0, 2, 1, 0, 3, 1, 0, 4, 1, 0, 65531, 1, 0, 65532, 1, 0, 65533, 1, 0, 65534, 1, 0 )

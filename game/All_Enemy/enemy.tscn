@@ -55,14 +55,13 @@ transform = Transform( 1, 0, 0, 0, 0.851997, 0, 0, 0, 1, 0, 0, 0 )
 shape = SubResource( 3 )
 
 [node name="Hitbox" parent="." instance=ExtResource( 5 )]
-transform = Transform( 1.24566, 0, 0, 0, 0.926959, 0, 0, 0, 1.58132, 0, 0, 0 )
-visible = false
+transform = Transform( 1.56953, 0, 0, 0, 0.926959, 0, 0, 0, 1.58132, 0, 0, 0 )
 collision_layer = 0
 collision_mask = 16
 damage = 1
 
 [node name="CollisionShape" parent="Hitbox" index="0"]
-transform = Transform( 1, 0, 0, 0, 0.531169, 0, 0, 0, 0.698044, 0, 0.834921, 0 )
+transform = Transform( 0.782999, 0, 0, 0, 1.01984, 0, 0, 0, 0.698043, 0, 0.83492, 0 )
 shape = SubResource( 4 )
 
 [node name="Stats" parent="." instance=ExtResource( 7 )]

@@ -17,6 +17,7 @@ export var gravity = 90
 export var jump = 15
 export var max_jumps = 2
 
+var stat = PlayerStats
 var look_rot = Vector3.ZERO
 var arm_rot = Vector3.ZERO
 var move_dir = Vector3.ZERO
@@ -27,6 +28,7 @@ var can_fire = true
 
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	arm.rotation_degrees.x += 90
 	
 func _physics_process(delta):
 	cam.rotation_degrees.x = look_rot.x
@@ -40,8 +42,9 @@ func _physics_process(delta):
 		bullet.rotation_degrees.y += 20
 		bullet.shoot(delta)
 		can_fire = false
-		yield(get_tree().create_timer(0.8), "timeout")
+		yield(get_tree().create_timer(0.5), "timeout")
 		can_fire = true
+		bullet.queue_free()
 
 	if Input.is_action_pressed("forward") or Input.is_action_pressed("backward") or Input.is_action_pressed("right") or Input.is_action_pressed("left"):
 		if Input.is_action_pressed("sprint"):
@@ -80,3 +83,6 @@ func _input(event):
 		look_rot.y -= event.relative.x * sensitivity
 		look_rot.x -= event.relative.y * sensitivity
 		look_rot.x = clamp(look_rot.x,  min_angle, max_angle)
+
+func _on_HurtBox_area_entered(area):
+	stat.health -= area.damage

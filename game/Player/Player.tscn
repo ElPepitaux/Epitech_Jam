@@ -4,6 +4,7 @@
 [ext_resource path="res://Player/Player.gd" type="Script" id=2]
 [ext_resource path="res://Anims/RightMembers.tres" type="Animation" id=3]
 [ext_resource path="res://Anims/LeftMembers.tres" type="Animation" id=4]
+[ext_resource path="res://Overlap/HurtBox.tscn" type="PackedScene" id=5]
 
 [sub_resource type="CapsuleMesh" id=1]
 
@@ -113,11 +114,6 @@ tracks/0/keys = {
 [sub_resource type="Animation" id=20]
 resource_name = "idle_right"
 length = 4.0
-
-[sub_resource type="SphereMesh" id=17]
-
-[sub_resource type="SpatialMaterial" id=18]
-albedo_color = Color( 0, 1, 0.160784, 1 )
 
 [sub_resource type="Animation" id=10]
 resource_name = "Move"
@@ -241,6 +237,8 @@ tracks/1/keys = {
 "times": PoolRealArray(  )
 }
 
+[sub_resource type="BoxShape" id=22]
+
 [node name="Player" type="KinematicBody"]
 collision_layer = 2
 script = ExtResource( 2 )
@@ -347,7 +345,7 @@ anims/RunRight = SubResource( 15 )
 anims/idle_right = SubResource( 20 )
 
 [node name="Camera" type="Camera" parent="."]
-transform = Transform( -1, 0, 0, 0, 1, 0, 0, 0, -1, 0, 2.02973, 1.31163 )
+transform = Transform( -1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 1.99634, 1.15801 )
 fov = 96.2492
 
 [node name="Cast" type="RayCast" parent="Camera"]
@@ -359,10 +357,6 @@ collide_with_areas = true
 [node name="End" type="Spatial" parent="Camera"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -100.017 )
 
-[node name="MeshInstance" type="MeshInstance" parent="Camera/End"]
-mesh = SubResource( 17 )
-material/0 = SubResource( 18 )
-
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 root_node = NodePath("../Left")
 reset_on_save = false
@@ -372,3 +366,15 @@ anims/RESET = SubResource( 11 )
 anims/RightMembers = ExtResource( 3 )
 anims/Run = SubResource( 16 )
 anims/idle = SubResource( 21 )
+
+[node name="HurtBox" parent="." instance=ExtResource( 5 )]
+collision_layer = 16
+collision_mask = 0
+
+[node name="CollisionShape" parent="HurtBox" index="0"]
+transform = Transform( 1.94407, 0, 0, 0, 2.69185, 0, 0, 0, 1, 0, 0.526036, 0 )
+shape = SubResource( 22 )
+
+[connection signal="area_entered" from="HurtBox" to="." method="_on_HurtBox_area_entered"]
+
+[editable path="HurtBox"]
