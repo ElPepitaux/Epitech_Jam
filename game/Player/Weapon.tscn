@@ -64,4 +64,4 @@ mesh = SubResource( 9 )
 material/0 = SubResource( 10 )
 
 [node name="Spawn" type="Spatial" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 6.27784 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 8.37816 )

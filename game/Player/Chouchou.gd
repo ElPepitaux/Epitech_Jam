@@ -1,7 +1,7 @@
 extends RigidBody
 
 export var damage = 50
-export var speed = 350
+export var speed = 200
 
 onready var hitbox = $Hitbox/CollisionShape
 onready var explosion = $Explosion

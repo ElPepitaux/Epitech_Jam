@@ -1,4 +1,6 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://Grabpin.gd" type="Script" id=1]
 
 [sub_resource type="CapsuleMesh" id=1]
 
@@ -26,6 +28,7 @@ albedo_color = Color( 0.756863, 0.815686, 0.0588235, 1 )
 
 [node name="Grabpin" type="Spatial"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.56323, 0 )
+script = ExtResource( 1 )
 
 [node name="MeshInstance" type="MeshInstance" parent="."]
 transform = Transform( 0.912393, 0, 0, 0, 0.912393, 0, 0, 0, 1.43223, 0, 0, 0 )
