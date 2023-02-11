@@ -4,6 +4,8 @@ onready var cam = $Camera
 onready var spawn = $Right/RightArm/Weapon/Spawn
 onready var anim = $AnimationPlayer
 onready var cast = $Camera/Cast
+onready var end = $Camera/End
+onready var arm = $Right/RightArm
 onready var bull = preload("res://Player/Chouchou.tscn")
 
 export var speed = 5
@@ -15,7 +17,9 @@ export var gravity = 90
 export var jump = 15
 export var max_jumps = 2
 
+var stat = PlayerStats
 var look_rot = Vector3.ZERO
+var arm_rot = Vector3.ZERO
 var move_dir = Vector3.ZERO
 var velocity = Vector3.ZERO
 var sprint = 1
@@ -24,6 +28,7 @@ var can_fire = true
 
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	arm.rotation_degrees.x += 90
 	
 func _physics_process(delta):
 	cam.rotation_degrees.x = look_rot.x
@@ -33,11 +38,13 @@ func _physics_process(delta):
 		var bullet = bull.instance()
 		spawn.add_child(bullet)
 		bullet.look_at(global_transform.origin, Vector3.UP)
-		bullet.rotation_degrees.y += 200
+		bullet.rotation_degrees.x += 200
+		bullet.rotation_degrees.y += 20
 		bullet.shoot(delta)
 		can_fire = false
-		yield(get_tree().create_timer(0.25), "timeout")
+		yield(get_tree().create_timer(0.5), "timeout")
 		can_fire = true
+		bullet.queue_free()
 
 	if Input.is_action_pressed("forward") or Input.is_action_pressed("backward") or Input.is_action_pressed("right") or Input.is_action_pressed("left"):
 		if Input.is_action_pressed("sprint"):
@@ -45,7 +52,7 @@ func _physics_process(delta):
 		else:
 			anim.current_animation = "Move"
 	else:
-		anim.current_animation = "RESET"
+		anim.current_animation = "idle"
 	if Input.is_action_just_pressed("jump") and is_up < max_jumps:
 		is_up += 1
 		velocity.y = jump
@@ -71,6 +78,11 @@ func _physics_process(delta):
 		
 func _input(event):
 	if event is InputEventMouseMotion:
+		arm.rotation_degrees.x -= event.relative.y * sensitivity
+		arm.rotation_degrees.x = clamp(arm.rotation_degrees.x, -60, 150)
 		look_rot.y -= event.relative.x * sensitivity
 		look_rot.x -= event.relative.y * sensitivity
 		look_rot.x = clamp(look_rot.x,  min_angle, max_angle)
+
+func _on_HurtBox_area_entered(area):
+	stat.health -= area.damage

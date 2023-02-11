@@ -46,7 +46,7 @@ script = ExtResource( 3 )
 shape = SubResource( 1 )
 
 [node name="HurtBox" parent="." instance=ExtResource( 4 )]
-transform = Transform( 2.63037, 0, 0, 0, 2.90968, 0, 0, 0, 3.13336, 0, 0, 0 )
+transform = Transform( 2.27467, 0, 0, 0, 2.38752, 0, 0, 0, 1.94467, 0, 0, 0 )
 collision_layer = 8
 collision_mask = 0
 
@@ -55,14 +55,13 @@ transform = Transform( 1, 0, 0, 0, 0.851997, 0, 0, 0, 1, 0, 0, 0 )
 shape = SubResource( 3 )
 
 [node name="Hitbox" parent="." instance=ExtResource( 5 )]
-transform = Transform( 1.24566, 0, 0, 0, 0.926959, 0, 0, 0, 1.58132, 0, 0, 0 )
-visible = false
+transform = Transform( 1.56953, 0, 0, 0, 0.926959, 0, 0, 0, 1.58132, 0, 0, 0 )
 collision_layer = 0
 collision_mask = 16
 damage = 1
 
 [node name="CollisionShape" parent="Hitbox" index="0"]
-transform = Transform( 1, 0, 0, 0, 0.531169, 0, 0, 0, 0.698044, 0, 0.834921, 0 )
+transform = Transform( 0.782999, 0, 0, 0, 1.01984, 0, 0, 0, 0.698043, 0, 0.83492, 0 )
 shape = SubResource( 4 )
 
 [node name="Stats" parent="." instance=ExtResource( 7 )]
@@ -71,7 +70,10 @@ max_health = 4
 [connection signal="body_entered" from="player_dection" to="player_dection" method="_on_player_dection_body_entered"]
 [connection signal="body_exited" from="player_dection" to="player_dection" method="_on_player_dection_body_exited"]
 [connection signal="area_entered" from="HurtBox" to="." method="_on_HurtBox_area_entered"]
+[connection signal="area_entered" from="Hitbox" to="." method="_on_Hitbox_area_entered"]
+[connection signal="area_exited" from="Hitbox" to="." method="_on_Hitbox_area_exited"]
 [connection signal="no_health" from="Stats" to="." method="_on_Stats_no_health"]
 
+[editable path="spider"]
 [editable path="HurtBox"]
 [editable path="Hitbox"]

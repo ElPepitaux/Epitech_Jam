@@ -45,3 +45,6 @@ shape = SubResource( 3 )
 
 [node name="enemy" parent="." instance=ExtResource( 1 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 32.7115 )
+
+[node name="Camera" type="Camera" parent="."]
+transform = Transform( -0.999863, 0, 0.01658, 0, 1, 0, -0.01658, 0, -0.999863, 0, 22.1854, -32.966 )
