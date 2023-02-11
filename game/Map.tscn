@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 [gd_scene load_steps=17 format=2]
-=======
-[gd_scene load_steps=13 format=2]
->>>>>>> b1fca104e8ffc46002472850725ad2291d93dae3
 
 [ext_resource path="res://asset/imfin.tscn" type="PackedScene" id=1]
 [ext_resource path="res://ligne.meshlib" type="MeshLibrary" id=2]
@@ -14,10 +10,7 @@
 [ext_resource path="res://blacksabbat.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Humvee.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Pneu.tscn" type="PackedScene" id=10]
-<<<<<<< HEAD
 [ext_resource path="res://asset/wall.jpg" type="Texture" id=11]
-=======
->>>>>>> b1fca104e8ffc46002472850725ad2291d93dae3
 
 [sub_resource type="PlaneMesh" id=1]
 
@@ -48,7 +41,6 @@ __meta__ = {
 }
 
 [node name="GridMap" type="GridMap" parent="MeshInstance"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
 mesh_library = ExtResource( 4 )
 data = {
 "cells": PoolIntArray( 2, 0, 0, 4, 0, 0, 65531, 0, 0, 4, 2, 0, 65531, 2, 0, 65532, 2, 0, 65533, 2, 0, 65534, 2, 0, 65535, 2, 0, 4, 3, 0, 65531, 3, 0, 65533, 3, 0, 65534, 3, 0, 4, 4, 0, 65531, 4, 0, 65532, 4, 0, 0, 5, 0, 1, 5, 0, 2, 5, 0, 3, 5, 0, 4, 5, 0, 65531, 5, 0, 65532, 5, 0, 65533, 5, 0, 65534, 5, 0, 65535, 5, 0, 0, 65533, 0, 1, 65533, 0, 2, 65533, 0, 3, 65533, 0, 4, 65533, 0, 65531, 65533, 0, 65532, 65533, 0, 65533, 65533, 0, 65534, 65533, 0, 65535, 65533, 0, 0, 65534, 0, 1, 65534, 0, 2, 65534, 0, 3, 65534, 0, 4, 65534, 0, 65531, 65534, 0, 65532, 65534, 0, 65533, 65534, 0, 4, 65535, 0, 65531, 65535, 0, 65532, 65535, 0, 65534, 65535, 0, 65535, 65535, 0 )
@@ -124,7 +116,6 @@ transform = Transform( 0.210598, 0, 0, 0, -0.00424873, 0.210555, 0, -0.210555, -
 
 [node name="Spatial8" parent="." instance=ExtResource( 10 )]
 transform = Transform( 0.210598, 0, 0, 0, -0.00424873, 0.210555, 0, -0.210555, -0.00424873, 77.5977, 6.28486, 43.5034 )
-<<<<<<< HEAD
 
 [node name="MeshInstance2" type="MeshInstance" parent="."]
 transform = Transform( -142.731, -1.24779e-05, -6.23895e-06, 6.23895e-06, 2.72713e-13, -142.731, 1.24779e-05, -142.731, 2.72713e-13, 0, 16.3948, 96.343 )
@@ -169,5 +160,3 @@ material/0 = SubResource( 5 )
 [node name="CollisionShape" type="CollisionShape" parent="MeshInstance4/StaticBody"]
 transform = Transform( -0.142905, 0.0335778, -1.08216e-08, 0.00480307, 0.999035, -2.30446e-09, 1.09545e-08, -1.90182e-08, -0.14016, 0, 0, 0 )
 shape = SubResource( 4 )
-=======
->>>>>>> b1fca104e8ffc46002472850725ad2291d93dae3
