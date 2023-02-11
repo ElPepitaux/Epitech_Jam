@@ -11,6 +11,7 @@ config_version=4
 [application]
 
 config/name="mmmmmmh godoooot"
+run/main_scene="res://Map.tscn"
 
 [autoload]
 
