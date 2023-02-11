@@ -5,6 +5,7 @@ onready var playerdection = $player_dection
 onready var hitbox = $Hitbox
 onready var wander = $Wander
 onready var stats = $Stats
+onready var softcollision = $softCollision
 
 enum {
 	IDLE,
@@ -66,6 +67,8 @@ func _physics_process(delta):
 			
 	velocity.y += gravity * delta
 			
+	if softcollision.is_colliding():
+		velocity += softcollision.get_push_vector()
 	velocity = move_and_slide(velocity)
 	
 func seek_player():

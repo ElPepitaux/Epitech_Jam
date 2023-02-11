@@ -317,6 +317,7 @@ anims/idle_right = SubResource( 20 )
 
 [node name="Camera" type="Camera" parent="."]
 transform = Transform( -1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 1.99634, 1.15801 )
+current = true
 fov = 96.2492
 far = 8192.0
 

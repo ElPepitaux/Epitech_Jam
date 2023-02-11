@@ -79,6 +79,7 @@ quit={
 3d_physics/layer_4="EnemHurtBox"
 3d_physics/layer_5="PLayerHurtBox"
 3d_physics/layer_6="Items"
+3d_physics/layer_7="SoftCollision"
 
 [physics]
 

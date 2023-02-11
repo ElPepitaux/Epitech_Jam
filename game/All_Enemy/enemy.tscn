@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://All_Enemy/spider.tscn" type="PackedScene" id=1]
 [ext_resource path="res://All_Enemy/enemy.gd" type="Script" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://Overlap/Hitbox.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Overlap/Wander.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Stats.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Overlap/softCollision.tscn" type="PackedScene" id=8]
 
 [sub_resource type="SphereShape" id=2]
 radius = 0.480858
@@ -18,6 +19,8 @@ radius = 3.72344
 radius = 0.597973
 
 [sub_resource type="CapsuleShape" id=4]
+
+[sub_resource type="SphereShape" id=5]
 
 [node name="enemy" type="KinematicBody"]
 collision_layer = 4
@@ -31,10 +34,12 @@ shape = SubResource( 2 )
 transform = Transform( 3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0 )
 
 [node name="Wander" parent="." instance=ExtResource( 6 )]
+visible = false
 wander_range = 100
 
 [node name="player_dection" type="Area" parent="."]
 transform = Transform( 7.39468, 0, 0, 0, 4.01323, 0, 0, 0, 7.07006, 0, 0, 0 )
+visible = false
 collision_layer = 0
 collision_mask = 2
 script = ExtResource( 3 )
@@ -44,6 +49,7 @@ shape = SubResource( 1 )
 
 [node name="HurtBox" parent="." instance=ExtResource( 4 )]
 transform = Transform( 2.27467, 0, 0, 0, 2.38752, 0, 0, 0, 1.94467, 0, 0, 0 )
+visible = false
 collision_layer = 8
 collision_mask = 0
 
@@ -53,6 +59,7 @@ shape = SubResource( 3 )
 
 [node name="Hitbox" parent="." instance=ExtResource( 5 )]
 transform = Transform( 1.56953, 0, 0, 0, 0.926959, 0, 0, 0, 1.58132, 0, 0, 0 )
+visible = false
 collision_layer = 0
 collision_mask = 16
 damage = 1
@@ -64,6 +71,14 @@ shape = SubResource( 4 )
 [node name="Stats" parent="." instance=ExtResource( 7 )]
 max_health = 4
 
+[node name="softCollision" parent="." instance=ExtResource( 8 )]
+collision_layer = 64
+collision_mask = 64
+
+[node name="CollisionShape" parent="softCollision" index="0"]
+transform = Transform( 1.6465, 0, 0, 0, 0.801019, 0, 0, 0, 1.69905, 0, 0.696436, 0 )
+shape = SubResource( 5 )
+
 [connection signal="body_entered" from="player_dection" to="player_dection" method="_on_player_dection_body_entered"]
 [connection signal="body_exited" from="player_dection" to="player_dection" method="_on_player_dection_body_exited"]
 [connection signal="area_entered" from="HurtBox" to="." method="_on_HurtBox_area_entered"]
@@ -72,3 +87,4 @@ max_health = 4
 [editable path="spider"]
 [editable path="HurtBox"]
 [editable path="Hitbox"]
+[editable path="softCollision"]

@@ -38,7 +38,7 @@ func _physics_process(delta):
 	update_text()
 	cam.rotation_degrees.x = look_rot.x
 	rotation_degrees.y = look_rot.y
-	print(stat.health)
+	print(rand_range(1, 2))
 
 	if Input.is_action_pressed("shoot") and can_fire:
 		var bullet = bull.instance()

@@ -33,12 +33,12 @@ material/0 = SubResource( 4 )
 
 [node name="HurtBox" parent="." instance=ExtResource( 1 )]
 collision_layer = 32
-collision_mask = 0
+collision_mask = 2
 
 [node name="CollisionShape" parent="HurtBox" index="0"]
-transform = Transform( 3.21944, 0, 0, 0, 3.02525, 0, 0, 0, 1, 0, 0, 0 )
+transform = Transform( 3.21944, 0, 0, 0, 3.02525, 0, 0, 0, 1.2738, 0, 0, 0 )
 shape = SubResource( 5 )
 
-[connection signal="area_entered" from="HurtBox" to="." method="_on_HurtBox_area_entered"]
+[connection signal="body_entered" from="HurtBox" to="." method="_on_HurtBox_body_entered"]
 
 [editable path="HurtBox"]
