@@ -4,7 +4,7 @@
 [ext_resource path="res://Player/BSOD.gd" type="Script" id=2]
 
 [sub_resource type="DynamicFont" id=2]
-size = 95
+size = 138
 font_data = ExtResource( 1 )
 
 [sub_resource type="DynamicFont" id=1]

@@ -139,6 +139,13 @@ func _physics_process(delta):
 		translation = Vector3(0, 0, 0)
 		
 func _input(event):
+	if event is InputEventJoypadMotion:
+		if event.axis == 3:
+			look_rot.y -= event.axis_value * sensitivity * 50
+		if event.axis == 4:
+			look_rot.x -= event.axis_value * sensitivity * 50
+		look_rot.x = clamp(look_rot.x,  min_angle, max_angle)
+		arm.rotation_degrees.x = look_rot.x + 90
 	if event is InputEventMouseMotion:
 		look_rot.y -= event.relative.x * sensitivity
 		look_rot.x -= event.relative.y * sensitivity
