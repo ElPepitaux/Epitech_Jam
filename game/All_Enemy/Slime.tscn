@@ -314,7 +314,7 @@ anims/Slime_JUMP = SubResource( 7 )
 anims/Slime_WALK = SubResource( 8 )
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
-transform = Transform( 23.0584, 0, 0, 0, 6.7671, 0, 0, 0, 20.9613, 0, 1.37896, 0 )
+transform = Transform( 22.9559, 0, 0, 0, 18.1569, 0, 0, 0, -21.4702, 0, 5.75303, 1.04555 )
 shape = SubResource( 9 )
 
 [node name="HurtBox" parent="." instance=ExtResource( 5 )]

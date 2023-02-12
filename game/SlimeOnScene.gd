@@ -19,9 +19,9 @@ var attack_player = false
 var gravity = -90
 var velocity = Vector3.ZERO
 var FRICTION = 5
-var SPRINT = 10
-var WALK = 5
-var ACCEL = 10
+var SPRINT = 15
+var WALK = 6
+var ACCEL = 15
 var count = Count
 
 func _ready():

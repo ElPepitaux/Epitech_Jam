@@ -95,8 +95,8 @@ func _on_Stats_no_health():
 	animation.play("Die", 0.5)
 	
 func die_animation_finish():
-	var nb = randi() % 20
-	if nb == 10:
+	var nb = randi() % 13
+	if nb == 5:
 		var ammo = lot_1.instance()
 		ammo.global_transform = global_transform
 		map.add_child(ammo)
