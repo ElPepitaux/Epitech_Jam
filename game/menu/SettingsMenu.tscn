@@ -1,16 +1,17 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
-[ext_resource path="res://emmasophia.ttf" type="DynamicFontData" id=1]
-[ext_resource path="res://SettingsMenu.gd" type="Script" id=2]
+[ext_resource path="res://menu/emmasophia.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://menu/SettingsMenu.gd" type="Script" id=2]
+[ext_resource path="res://emmasophia.ttf" type="DynamicFontData" id=3]
 
 [sub_resource type="DynamicFont" id=1]
-font_data = ExtResource( 1 )
+font_data = ExtResource( 3 )
 
 [sub_resource type="Theme" id=2]
 default_font = SubResource( 1 )
 
 [sub_resource type="DynamicFont" id=3]
-font_data = ExtResource( 1 )
+font_data = ExtResource( 3 )
 
 [sub_resource type="DynamicFont" id=4]
 size = 19
@@ -22,7 +23,7 @@ font_data = ExtResource( 1 )
 
 [sub_resource type="DynamicFont" id=5]
 use_mipmaps = true
-font_data = ExtResource( 1 )
+font_data = ExtResource( 3 )
 
 [sub_resource type="DynamicFont" id=6]
 size = 17
@@ -105,7 +106,7 @@ text = "Display mode
 "
 
 [node name="DM" type="OptionButton" parent="settings/video/MarginContainer/VideoSettings"]
-margin_left = 700.0
+margin_left = 825.0
 margin_right = 862.0
 margin_bottom = 61.0
 size_flags_horizontal = 10

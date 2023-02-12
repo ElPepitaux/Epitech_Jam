@@ -7,4 +7,4 @@ func _ready():
 	yield(get_tree().create_timer(6), "timeout")
 	$AnimationPlayer.play("out")
 	yield(get_tree().create_timer(3),"timeout")
-	get_tree().change_scene("res://menu.tscn")
+	get_tree().change_scene("res://menu/menu.tscn")

@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/vector-game-over-phrase-pixel-260nw-700369225.webp-c6ad8aa88121b0e5e6eac4baa969dce5.stex"
+path="res://.import/normal.png-9b09d8f40109dfc4a98b296f35d3b4ea.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://vector-game-over-phrase-pixel-260nw-700369225.webp"
-dest_files=[ "res://.import/vector-game-over-phrase-pixel-260nw-700369225.webp-c6ad8aa88121b0e5e6eac4baa969dce5.stex" ]
+source_file="res://menu/normal.png"
+dest_files=[ "res://.import/normal.png-9b09d8f40109dfc4a98b296f35d3b4ea.stex" ]
 
 [params]
 
@@ -20,7 +20,7 @@ compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=true
+flags/filter=false
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2
@@ -29,7 +29,7 @@ process/premult_alpha=false
 process/HDR_as_SRGB=false
 process/invert_color=false
 process/normal_map_invert_y=false
-stream=false
+stream=0
 size_limit=0
-detect_3d=true
+detect_3d=false
 svg/scale=1.0

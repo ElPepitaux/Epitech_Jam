@@ -2,4 +2,3 @@
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer"]
 autoplay = true
-bus = "Music"

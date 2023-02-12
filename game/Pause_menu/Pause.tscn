@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://asset/prstart.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://Pause_menu/Pause.gd" type="Script" id=2]
+[ext_resource path="res://menu/SettingsMenu.tscn" type="PackedScene" id=3]
 
 [sub_resource type="DynamicFont" id=2]
 size = 138
@@ -93,6 +94,8 @@ margin_right = 558.0
 margin_bottom = 46.0
 custom_fonts/font = SubResource( 1 )
 text = "Exit"
+
+[node name="SettingsMenu" parent="." instance=ExtResource( 3 )]
 
 [connection signal="pressed" from="VBoxContainer/Continue" to="." method="_on_Continue_pressed"]
 [connection signal="pressed" from="VBoxContainer/Settings" to="." method="_on_Settings_pressed"]

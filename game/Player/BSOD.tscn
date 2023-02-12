@@ -77,3 +77,4 @@ custom_fonts/font = SubResource( 1 )
 text = "Exit"
 
 [connection signal="pressed" from="VBoxContainer/Restart" to="." method="_on_Restart_pressed"]
+[connection signal="pressed" from="VBoxContainer/Main_Menu" to="." method="_on_Main_Menu_pressed"]

@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://env.gd" type="Script" id=1]
+[ext_resource path="res://menu/env.gd" type="Script" id=1]
 
 [sub_resource type="Environment" id=1]
 glow_enabled = true
