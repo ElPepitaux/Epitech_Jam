@@ -55,11 +55,11 @@ func _on_mastervol_value_changed(value):
 
 
 func _on_musicvol2_value_changed(value):
-	pass
+	GlobalSettings.update_master_vol(value)
 
 
 func _on_sfx2_value_changed(value):
-	pass
+	GlobalSettings.update_master_vol(value)
 	
 
 

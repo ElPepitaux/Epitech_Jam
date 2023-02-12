@@ -11,7 +11,7 @@ font_data = ExtResource( 3 )
 default_font = SubResource( 1 )
 
 [sub_resource type="DynamicFont" id=3]
-font_data = ExtResource( 3 )
+font_data = ExtResource( 1 )
 
 [sub_resource type="DynamicFont" id=4]
 size = 19
@@ -23,7 +23,7 @@ font_data = ExtResource( 1 )
 
 [sub_resource type="DynamicFont" id=5]
 use_mipmaps = true
-font_data = ExtResource( 3 )
+font_data = ExtResource( 1 )
 
 [sub_resource type="DynamicFont" id=6]
 size = 17

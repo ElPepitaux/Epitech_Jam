@@ -8,5 +8,5 @@ func _process(delta):
 	text = "FPS: %s" %  str([Engine.get_frames_per_second()])
 	
 	
-func _on_fps_displayed(value):
+func on_fps_displayed(value):
 	visible = value
