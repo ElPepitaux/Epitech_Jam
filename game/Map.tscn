@@ -48,6 +48,7 @@ background_mode = 2
 background_sky = SubResource( 7 )
 
 [node name="map" type="Spatial"]
+pause_mode = 2
 transform = Transform( 0.993673, 0, 0, 0, 0.993673, 0, 0, 0, 0.993673, 0, 0, 0 )
 script = ExtResource( 22 )
 

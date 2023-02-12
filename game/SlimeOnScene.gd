@@ -4,7 +4,6 @@ onready var playerdection = $player_dection
 onready var hitbox = $Hitbox
 onready var wander = $Wander
 onready var stats = $Stats
-onready var softcollision = $softCollision
 onready var animation = $AnimationPlayer
 
 enum {
@@ -13,6 +12,7 @@ enum {
 	CHASE
 }
 
+var boss = Count
 var stat = IDLE
 
 var attack_player = false
@@ -81,10 +81,11 @@ func pick_random_state(list_state):
 func _on_HurtBox_area_entered(area):
 	stats.health -= area.damage
 	
+func slim_animation_finished():
+	boss.boss = true
+	queue_free()
+
 func _on_Stats_no_health():
 	stat = null
 	velocity = Vector3.ZERO
 	animation.play("Slime_DEAD", 0.5)
-	
-func slim_animation_finished():
-	queue_free()

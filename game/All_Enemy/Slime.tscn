@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://All_Enemy/Slime/Slime_Material.tres" type="Material" id=1]
 [ext_resource path="res://SlimeOnScene.gd" type="Script" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://Overlap/HurtBox.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Overlap/Hitbox.tscn" type="PackedScene" id=6]
 [ext_resource path="res://assets/slime.ogg" type="AudioStream" id=7]
+[ext_resource path="res://Stats.tscn" type="PackedScene" id=8]
 
 [sub_resource type="SpatialMaterial" id=1]
 resource_name = "SlimeBody"
@@ -248,6 +249,7 @@ radius = 3.72344
 
 [node name="Slime" type="KinematicBody"]
 transform = Transform( 3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0 )
+collision_layer = 4
 script = ExtResource( 2 )
 
 [node name="Sketchfab_model" type="Spatial" parent="."]
@@ -314,17 +316,22 @@ anims/Slime_JUMP = SubResource( 7 )
 anims/Slime_WALK = SubResource( 8 )
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
-transform = Transform( 22.9559, 0, 0, 0, 18.1569, 0, 0, 0, -21.4702, 0, 5.75303, 1.04555 )
+transform = Transform( 22.9559, 0, 0, 0, 16.7743, 0, 0, 0, -21.4702, 0, 7.28704, 1.04555 )
 shape = SubResource( 9 )
 
 [node name="HurtBox" parent="." instance=ExtResource( 5 )]
 transform = Transform( 3.45723, 0, 0, 0, 2.66592, 0, 0, 0, 3.89589, 0, 0, -1.66741 )
+collision_layer = 8
+collision_mask = 0
 
 [node name="CollisionShape" parent="HurtBox" index="0"]
-transform = Transform( 3.77416, 0, 0, 0, 2.5296, 0, 0, 0, 2.50613, 0, 1.21339, 0.34268 )
+transform = Transform( 3.59929, 0, 0, 0, 2.5296, 0, 0, 0, 2.50613, 0, 1.21339, 0.34268 )
 shape = SubResource( 11 )
 
 [node name="Hitbox" parent="." instance=ExtResource( 6 )]
+transform = Transform( 0.831154, 0, 0, 0, 1, 0, 0, 0, 1.13078, 0, 0, 0 )
+collision_layer = 0
+collision_mask = 16
 
 [node name="CollisionShape" parent="Hitbox" index="0"]
 transform = Transform( -11.7246, 0, 0, 0, 8.19548, 0, 0, 0, 9.25206, 0, 3.97899, 0 )
@@ -344,8 +351,13 @@ shape = SubResource( 10 )
 [node name="Sound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 7 )
 
+[node name="Stats" parent="." instance=ExtResource( 8 )]
+max_health = 50
+
+[connection signal="area_entered" from="HurtBox" to="." method="_on_HurtBox_area_entered"]
 [connection signal="body_entered" from="player_dection" to="player_dection" method="_on_player_dection_body_entered"]
 [connection signal="body_exited" from="player_dection" to="player_dection" method="_on_player_dection_body_exited"]
+[connection signal="no_health" from="Stats" to="." method="_on_Stats_no_health"]
 
 [editable path="HurtBox"]
 [editable path="Hitbox"]

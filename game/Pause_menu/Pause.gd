@@ -5,6 +5,8 @@ onready var button_continue = $VBoxContainer/Continue
 onready var button_settings = $VBoxContainer/Settings
 onready var button_mainmenu = $VBoxContainer/Main_Menu
 
+var player = PlayerStats
+
 func _ready():
 	self.visible = false
 	var min_size = Vector2.UP
@@ -15,7 +17,7 @@ func _ready():
 	button_mainmenu.rect_min_size = min_size
 	
 func _process(delta):
-	if Input.is_action_just_pressed("pause"):
+	if Input.is_action_just_pressed("pause") and player.health > 0:
 		if Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
 			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 		else:
@@ -28,12 +30,8 @@ func _on_Continue_pressed():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	get_tree().paused = false
 
-
-
 func _on_Settings_pressed():
 		get_tree().change_scene("settings")
-
-
 
 func _on_Main_Menu_pressed():
 	get_tree().change_scene("main menu")

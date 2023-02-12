@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=2]
+[gd_scene load_steps=50 format=2]
 
 [ext_resource path="res://Player/Weapon.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Player/Player.gd" type="Script" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://Player/BSOD.tscn" type="PackedScene" id=7]
 [ext_resource path="res://asset/epi.png" type="Texture" id=8]
 [ext_resource path="res://assets/chouchou.ogg" type="AudioStream" id=9]
+[ext_resource path="res://asset/prstart.ttf" type="DynamicFontData" id=10]
 
 [sub_resource type="CapsuleMesh" id=1]
 
@@ -146,6 +147,49 @@ tracks/0/keys = {
 resource_name = "idle_right"
 length = 4.0
 
+[sub_resource type="Animation" id=39]
+resource_name = "End"
+length = 9.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("../Camera:translation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 1.4, 8.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 1.99634, 1.15801 ), Vector3( 0, 1.99634, 6.48287 ), Vector3( -5.20737, 3.14155, 6.48287 ), Vector3( 0, 1.99634, 1.15801 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("../Camera:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1.5, 7.8, 8.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 180, 0 ), Vector3( -2, -25.483, 0 ), Vector3( -2, -25.483, 0 ), Vector3( 0, 180, 0 ) ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath("..")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 8.9 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "end_animation_finished"
+} ]
+}
+
 [sub_resource type="Animation" id=10]
 resource_name = "Move"
 length = 2.0
@@ -220,6 +264,30 @@ tracks/3/keys = {
 "update": 0,
 "values": [ Vector3( 70, 180, 0 ) ]
 }
+tracks/4/type = "value"
+tracks/4/path = NodePath("../Camera:translation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( 0, 1.99634, 1.15801 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("../Camera:rotation_degrees")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ) ]
+}
 
 [sub_resource type="Animation" id=16]
 resource_name = "Run"
@@ -269,6 +337,16 @@ tracks/1/keys = {
 }
 
 [sub_resource type="BoxShape" id=22]
+
+[sub_resource type="DynamicFont" id=40]
+font_data = ExtResource( 10 )
+
+[sub_resource type="DynamicFont" id=41]
+font_data = ExtResource( 10 )
+
+[sub_resource type="DynamicFont" id=42]
+size = 39
+font_data = ExtResource( 10 )
 
 [sub_resource type="CylinderMesh" id=28]
 
@@ -405,7 +483,7 @@ anims/RunRight = SubResource( 15 )
 anims/idle_right = SubResource( 20 )
 
 [node name="Camera" type="Camera" parent="."]
-transform = Transform( -1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 1.99634, 1.15801 )
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 1.99634, 1.15801 )
 fov = 96.2492
 far = 8192.0
 
@@ -421,6 +499,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -100.017 )
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 root_node = NodePath("../Left")
 reset_on_save = false
+anims/End = SubResource( 39 )
 anims/LeftMembers = ExtResource( 4 )
 anims/Move = SubResource( 10 )
 anims/RESET = SubResource( 11 )
@@ -446,35 +525,60 @@ anchor_top = 22.5
 anchor_bottom = 22.5
 margin_left = 1.0
 margin_top = -92.0001
-margin_right = 256.0
+margin_right = 381.0
 margin_bottom = -0.00012207
 color = Color( 1, 1, 1, 0.572549 )
 
 [node name="HP" type="Label" parent="Control/info"]
-margin_left = 93.0
-margin_right = 255.0
+margin_left = 182.363
+margin_right = 374.363
 margin_bottom = 44.0
 custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 40 )
 text = "HP : 10 / 10"
 align = 1
 valign = 1
 
+[node name="Enemy" type="Label" parent="Control/info"]
+margin_left = 150.0
+margin_top = 21.597
+margin_right = 342.0
+margin_bottom = 65.597
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 40 )
+text = "Kill : 10 / 10"
+align = 1
+valign = 1
+
 [node name="Ammo" type="Label" parent="Control/info"]
-margin_left = 92.0
+margin_left = 150.0
 margin_top = 47.0
-margin_right = 254.0
+margin_right = 358.0
 margin_bottom = 92.0
 custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "Ammo : 10 /10"
+custom_fonts/font = SubResource( 41 )
+text = "Ammo : 10 / 10"
 align = 1
 valign = 1
 
 [node name="ColorRect" type="ColorRect" parent="Control/info"]
 margin_left = -1.0
 margin_top = -1.0
-margin_right = 92.0
+margin_right = 129.0
 margin_bottom = 92.0
 color = Color( 0, 0, 0, 0.686275 )
+
+[node name="Name" type="Label" parent="Control/info/ColorRect"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -58.5
+margin_top = -20.0
+margin_right = 58.5
+margin_bottom = 20.0
+custom_fonts/font = SubResource( 42 )
+text = "W.G"
 
 [node name="aim" type="ColorRect" parent="Control"]
 margin_left = 957.0
