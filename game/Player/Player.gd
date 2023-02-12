@@ -16,7 +16,7 @@ onready var aie = $AieScreen
 onready var bsod = $BSOD
 onready var current = gun
 onready var cur_stat = stat_gun
-
+onready var sound = $Sound
 
 export var speed = 5
 export var acceleration = 8
@@ -80,6 +80,7 @@ func _physics_process(delta):
 	rotation_degrees.y = look_rot.y
 
 	if Input.is_action_pressed("shoot") and can_fire and cur_stat.ammo > 0:
+		sound.play(0.0)
 		cur_stat.ammo -= 1
 		var bullet = bull.instance()
 		bullet.damage = cur_stat.damage
@@ -92,6 +93,7 @@ func _physics_process(delta):
 		can_fire = false
 		yield(get_tree().create_timer(0.5), "timeout")
 		can_fire = true
+		sound.stop()		
 		bullet.queue_free()
 		
 	if Input.is_action_just_pressed("switch_weapon"):

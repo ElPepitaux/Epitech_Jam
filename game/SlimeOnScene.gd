@@ -1,49 +1,90 @@
 extends KinematicBody
 
-var gravity = -9.8
-var velocity = Vector3()
+onready var playerdection = $player_dection
+onready var hitbox = $Hitbox
+onready var wander = $Wander
+onready var stats = $Stats
+onready var softcollision = $softCollision
+onready var animation = $AnimationPlayer
 
-const SPEED = 6
-const ACCELERATION = 3
-const DE_ACCELERATION = 5
+enum {
+	IDLE,
+	WANDER,
+	CHASE
+}
 
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
+var stat = IDLE
 
+var attack_player = false
+var gravity = -90
+var velocity = Vector3.ZERO
+var FRICTION = 5
+var SPRINT = 10
+var WALK = 5
+var ACCEL = 10
+var count = Count
 
-# Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
-	# camera = get_node("../Camera").get_global_transform()
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+	randomize()
+	stat = pick_random_state([IDLE, WANDER])
 
 func _physics_process(delta):
-	var dir = Vector3()
+	match stat:
+		IDLE:
+			animation.play("Slime_IDLE")
+			velocity = Vector3.ZERO
+			seek_player()
+			
+			if wander.get_time_left() == 0:
+				stat = pick_random_state([IDLE, WANDER])
+				wander.start_timer_wander(rand_range(5, 10))
+			
+		WANDER:
+			seek_player()
+			animation.play("Slime_WALK")
+			if wander.get_time_left() == 0:
+				stat = pick_random_state([IDLE, WANDER])
+				wander.start_timer_wander(rand_range(5, 10))
+				
+			var direction = global_transform.origin.direction_to(wander.target_position)
+			velocity = velocity.move_toward(direction * WALK, ACCEL * delta)
+			look_at(wander.target_position, Vector3.UP)
+			rotation_degrees.y += 180
+			if global_transform.origin.distance_to(wander.target_position) <= 4:
+				stat = pick_random_state([IDLE, WANDER])
+				wander.start_timer_wander(rand_range(5, 10))
+
+		CHASE:
+			animation.play("Slime_WALK")
+			var player = playerdection.player
+			if player != null:
+				look_at(player.global_transform.origin, Vector3.UP)
+				rotation_degrees.y += 180
+				var direction = global_transform.origin.direction_to(player.get_global_transform().origin)
+				
+				velocity = velocity.move_toward(direction * SPRINT, ACCEL * delta)
+			else:
+				stat = IDLE
+			
+	velocity.y += gravity * delta
+
+	velocity = move_and_slide(velocity, Vector3.UP)
 	
-	dir += Vector3(1, 0, 0)
+func seek_player():
+	if playerdection.can_see_player():
+		stat = CHASE
+
+func pick_random_state(list_state):
+	list_state.shuffle()
+	return list_state.pop_front()
+
+func _on_HurtBox_area_entered(area):
+	stats.health -= area.damage
 	
-	dir.y = 0
-	dir = dir.normalized()
+func _on_Stats_no_health():
+	stat = null
+	velocity = Vector3.ZERO
+	animation.play("Slime_DEAD", 0.5)
 	
-	velocity.y = delta * gravity
-	
-	var hv = velocity
-	
-	hv.y = 0
-	var new_pos = dir * SPEED
-	var accel = DE_ACCELERATION
-	
-	if (dir.dot(hv) > 0):
-		accel = ACCELERATION
-		
-	hv = hv.linear_interpolate(new_pos, accel * delta)
-	
-	velocity.x = hv.x
-	velocity.z = hv.z
-	
-	velocity = move_and_slide(velocity, Vector3(0, 1, 0))
+func slim_animation_finished():
+	queue_free()

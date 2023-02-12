@@ -29,7 +29,7 @@ albedo_color = Color( 0.576471, 0.772549, 0.152941, 1 )
 [sub_resource type="CapsuleShape" id=9]
 
 [node name="Chouchou" type="RigidBody"]
-transform = Transform( -2.18557e-08, -0.5, 0, 0.5, -2.18557e-08, 0, 0, 0, 0.5, 0, 0, 0 )
+transform = Transform( -2.18557e-08, 0.5, 0, -0.5, -2.18557e-08, 0, 0, 0, 0.5, 0, 0, 0 )
 collision_layer = 0
 collision_mask = 8
 mass = 0.01
@@ -52,7 +52,7 @@ mesh = SubResource( 1 )
 material/0 = SubResource( 4 )
 
 [node name="Head1" type="MeshInstance" parent="."]
-transform = Transform( 0.380416, 0, 0, 0, -2.48489e-08, 0.462083, 0, -0.568475, -2.01983e-08, 0, 0.583694, 0 )
+transform = Transform( 0.380416, -1.49012e-08, 1.49012e-08, -1.49012e-08, -2.23517e-08, 0.462083, -1.49012e-08, -0.568475, -1.49012e-08, 1.49012e-08, 0.583694, 7.45058e-09 )
 mesh = SubResource( 5 )
 material/0 = SubResource( 6 )
 

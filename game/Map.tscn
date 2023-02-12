@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=2]
+[gd_scene load_steps=30 format=2]
 
 [ext_resource path="res://asset/imfin.tscn" type="PackedScene" id=1]
 [ext_resource path="res://ligne.meshlib" type="MeshLibrary" id=2]
@@ -18,8 +18,11 @@
 [ext_resource path="res://shabbat.tscn" type="PackedScene" id=16]
 [ext_resource path="res://Truesabat.tscn" type="PackedScene" id=17]
 [ext_resource path="res://Pause_menu/Pause.tscn" type="PackedScene" id=18]
-[ext_resource path="res://Map.gd" type="Script" id=19]
+[ext_resource path="res://assets/music.ogg" type="AudioStream" id=19]
 [ext_resource path="res://bat_animation_fly/scene.gltf" type="PackedScene" id=20]
+[ext_resource path="res://All_Enemy/Mobspawner.tscn" type="PackedScene" id=21]
+[ext_resource path="res://Map.gd" type="Script" id=22]
+[ext_resource path="res://Spatial23.gd" type="Script" id=23]
 
 [sub_resource type="PlaneMesh" id=1]
 
@@ -37,7 +40,7 @@ albedo_texture = ExtResource( 11 )
 
 [node name="map" type="Spatial"]
 transform = Transform( 0.993673, 0, 0, 0, 0.993673, 0, 0, 0, 0.993673, 0, 0, 0 )
-script = ExtResource( 19 )
+script = ExtResource( 22 )
 
 [node name="MeshInstance" type="MeshInstance" parent="."]
 transform = Transform( 14.0404, 0, 0, 0, 4.62503, 0, 0, 0, -16.3434, 0, 0, 0 )
@@ -141,7 +144,7 @@ __meta__ = {
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 23.2484, 0 )
 
 [node name="enemy" parent="." instance=ExtResource( 7 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.15186, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 28.8078, 6.93626, -0.295587 )
 
 [node name="enemy2" parent="." instance=ExtResource( 7 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.15186, 0 )
@@ -298,5 +301,61 @@ shape = SubResource( 6 )
 
 [node name="Pause" parent="." instance=ExtResource( 18 )]
 
-[node name="Bat" parent="." instance=ExtResource( 20 )]
-transform = Transform( 1.00637, 0, 0, 0, 1.00637, 0, 0, 0, 1.00637, -49.6501, 134.039, -34.4446 )
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 19 )
+autoplay = true
+
+[node name="Mob_spawner" parent="." instance=ExtResource( 21 )]
+transform = Transform( -0.435798, 0, 0.900047, 0, 1, 0, -0.900047, 0, -0.435798, 96.1795, 8.74445, 21.496 )
+
+[node name="Mob_spawner2" parent="." instance=ExtResource( 21 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 68.3873, 7.63568, -178.404 )
+
+[node name="Mob_spawner3" parent="." instance=ExtResource( 21 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -166.784, 8.13571, 0 )
+
+[node name="Mob_spawner4" parent="." instance=ExtResource( 21 )]
+transform = Transform( -0.745756, 0, -0.666221, 0, 1, 0, 0.666221, 0, -0.745756, 0, 8.55429, -98.0562 )
+
+[node name="Mob_spawner5" parent="." instance=ExtResource( 21 )]
+transform = Transform( -0.999375, 0, -0.0354054, 0, 1, 0, 0.0354054, 0, -0.999375, -42.6666, 9.62209, 1.42869 )
+
+[node name="Mob_spawner6" parent="." instance=ExtResource( 21 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -117.345, 8.52783, -174.112 )
+
+[node name="Mob_spawner7" parent="." instance=ExtResource( 21 )]
+transform = Transform( -0.059289, 0, 0.998242, 0, 1, 0, -0.998242, 0, -0.059289, -91.2896, 8.50437, 71.0552 )
+
+[node name="Mob_spawner8" parent="." instance=ExtResource( 21 )]
+transform = Transform( -0.938011, 0, -0.346609, 0, 1, 0, 0.346609, 0, -0.938011, 109.02, 9.27351, -66.237 )
+
+[node name="Mob_spawner9" parent="." instance=ExtResource( 21 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -218.528, 7.56156, -89.7511 )
+
+[node name="enemy2" parent="." instance=ExtResource( 7 )]
+transform = Transform( 0.451252, 0, 0.892398, 0, 1, 0, -0.892398, 0, 0.451252, -204.376, 6.79894, -55.1094 )
+
+[node name="enemy3" parent="." instance=ExtResource( 7 )]
+transform = Transform( 0.451252, 0, 0.892398, 0, 1, 0, -0.892398, 0, 0.451252, -128.885, 6.79894, 48.3074 )
+
+[node name="enemy4" parent="." instance=ExtResource( 7 )]
+transform = Transform( 0.451253, 0, 0.8924, 0, 1, 0, -0.8924, 0, 0.451253, -91.1509, 8.88873, -80.9261 )
+
+[node name="enemy5" parent="." instance=ExtResource( 7 )]
+transform = Transform( 0.451253, 0, 0.892399, 0, 1, 0, -0.892399, 0, 0.451253, -124.772, 8.51758, -123.599 )
+
+[node name="enemy6" parent="." instance=ExtResource( 7 )]
+transform = Transform( 0.451253, 0, 0.892399, 0, 1, 0, -0.892399, 0, 0.451253, -74.2094, 19.18, -131.09 )
+
+[node name="Mob_spawner10" parent="." instance=ExtResource( 21 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -381.928, 10.1707, 18.376 )
+
+[node name="Mob_spawner11" parent="." instance=ExtResource( 21 )]
+transform = Transform( -0.999923, 0, -0.0125836, 0, 1, 0, 0.0125836, 0, -0.999923, -333.718, 10.1707, -141.875 )
+
+[node name="scene" parent="." instance=ExtResource( 20 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -56.1975, 88.1125, -67.6244 )
+
+[node name="Spatial23" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -332.648, 14.0978, 1.67742 )
+script = ExtResource( 23 )

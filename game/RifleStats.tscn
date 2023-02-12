@@ -6,4 +6,4 @@
 script = ExtResource( 1 )
 max_ammo = 5
 SPEED = 500
-damage = 4
+damage = 5

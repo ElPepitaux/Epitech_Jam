@@ -1,7 +1,12 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://All_Enemy/Slime/Slime_Material.tres" type="Material" id=1]
 [ext_resource path="res://SlimeOnScene.gd" type="Script" id=2]
+[ext_resource path="res://All_Enemy/player_dection.gd" type="Script" id=3]
+[ext_resource path="res://Overlap/Wander.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Overlap/HurtBox.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Overlap/Hitbox.tscn" type="PackedScene" id=6]
+[ext_resource path="res://assets/slime.ogg" type="AudioStream" id=7]
 
 [sub_resource type="SpatialMaterial" id=1]
 resource_name = "SlimeBody"
@@ -74,9 +79,24 @@ tracks/3/loop_wrap = true
 tracks/3/imported = true
 tracks/3/enabled = true
 tracks/3/keys = PoolRealArray( 0, 1, 0, -1.19209e-06, 4.76837e-06, -0.0099746, 0, 0, 0.99995, 1, 1, 1, 0.0666667, 1, -1.61404e-07, -32.4309, 25.2963, 0.510452, 0, 0, 0.859906, 0.795547, 0.515113, 2.19292, 0.133333, 1, -4.84366e-07, -8.56331, 8.64447, 0.367783, 0, 0, 0.929912, 0.820708, 0.554842, 1.96307, 0.2, 1, 1.82507e-05, 4.04421, -1.0663, 0.175579, 0, 0, 0.984465, 0.883195, 0.732015, 1.40949, 0.266667, 1, 3.19896e-05, 6.84824, -6.996, 0.0781928, 0, 0, 0.996938, 0.957426, 0.899896, 1.05391, 0.333333, 1, 7.71903e-06, 2.96472, -12.0041, 0.0235019, 0, 0, 0.999724, 1.02533, 0.990265, 0.945728, 0.4, 1, 1.72159e-06, -3.4196, -12.5402, 0.00121858, 0, 0, 0.999999, 1.03475, 1.00448, 0.949851, 0.466667, 1, -6.25892e-07, -5.22993, -9.56473, -0.0107246, 0, 0, 0.999942, 1.02801, 1.0084, 0.964919, 0.533333, 1, -1.8327e-07, -1.13459, -1.97583, -0.00943083, 0, 0, 0.999956, 1.00585, 1.00191, 0.992682, 0.6, 1, -9.09495e-13, 0.386615, 0.805383, -0.0103648, 0, 0, 0.999946, 0.997712, 0.999447, 1.00303, 0.666667, 1, -2.27374e-13, 0.0638423, 0.132185, -0.0197818, 0, 0, 0.999804, 0.999749, 0.999948, 1.00032, 0.68, 1, -2.27374e-13, 0.0638423, 0.132185, -0.0392598, 0, 0, 0.999229, 1, 1, 1 )
+tracks/4/type = "method"
+tracks/4/path = NodePath(".")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0.6 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "slim_animation_finished"
+} ]
+}
 
 [sub_resource type="Animation" id=5]
 length = 0.68
+loop = true
 tracks/0/type = "transform"
 tracks/0/path = NodePath("Sketchfab_model/8f4b526ad5bb40e8a038ee6183f7246dfbx/Object_2/RootNode/Object_4/Skeleton:blob1_01")
 tracks/0/interp = 1
@@ -108,6 +128,7 @@ tracks/3/keys = PoolRealArray( 0, 1, 0, -1.19209e-06, 4.76837e-06, -0.0099746, 0
 
 [sub_resource type="Animation" id=6]
 length = 1.6
+loop = true
 tracks/0/type = "transform"
 tracks/0/path = NodePath("Sketchfab_model/8f4b526ad5bb40e8a038ee6183f7246dfbx/Object_2/RootNode/Object_4/Skeleton:blob1_01")
 tracks/0/interp = 1
@@ -200,9 +221,30 @@ tracks/3/loop_wrap = true
 tracks/3/imported = true
 tracks/3/enabled = true
 tracks/3/keys = PoolRealArray( 0, 1, 0, 4.21839, -5.33823, 0.0131607, 0, 0, 0.999913, 0.96524, 1.00286, 0.932946, 0.0666667, 1, 0, -2.27867, -4.65892, 0.0133935, 0, 0, 0.99991, 1.00832, 1.00145, 0.94971, 0.133333, 1, 0, -9.73861, -3.23376, 0.0141269, 0, 0, 0.9999, 1.0404, 1.00019, 0.986436, 0.2, 1, 0, -9.8437, -1.63778, 0.00757081, 0, 0, 0.999971, 1.03448, 0.999503, 1.02012, 0.266667, 1, 0, -4.79427, 0.306655, -0.00401263, 0, 0, 0.999992, 0.985736, 0.997841, 1.04791, 0.333333, 1, 0, -0.0848098, 0.970096, -0.0123127, 0, 0, 0.999924, 0.911477, 0.997415, 1.05973, 0.4, 1, 0, 2.78393, -0.630579, -0.0160886, 0, 0, 0.999871, 0.859103, 0.997973, 1.05442, 0.466667, 1, 0, 4.78348, -2.74668, -0.0154237, 0, 0, 0.999881, 0.837805, 0.998696, 1.03694, 0.533333, 1, 0, 5.91128, -4.20143, -0.00621373, 0, 0, 0.999981, 0.864599, 1.00024, 0.994628, 0.6, 1, 0, 5.68104, -5.17589, 0.00752454, 0, 0, 0.999972, 0.930761, 1.0025, 0.944968, 0.64, 1, 0, 4.21839, -5.33823, 0.0131607, 0, 0, 0.999913, 0.96524, 1.00286, 0.932946 )
+tracks/4/type = "audio"
+tracks/4/path = NodePath("Sound")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"clips": [ {
+"end_offset": 0.12,
+"start_offset": 0.0,
+"stream": ExtResource( 7 )
+} ],
+"times": PoolRealArray( 0.5 )
+}
 
 [sub_resource type="SphereShape" id=9]
 radius = 0.5
+
+[sub_resource type="SphereShape" id=11]
+
+[sub_resource type="SphereShape" id=12]
+
+[sub_resource type="SphereShape" id=10]
+radius = 3.72344
 
 [node name="Slime" type="KinematicBody"]
 transform = Transform( 3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0 )
@@ -212,7 +254,7 @@ script = ExtResource( 2 )
 transform = Transform( 1, 0, 0, 0, 2.22045e-16, 1, 0, -1, 2.22045e-16, 0, 0, 0 )
 
 [node name="8f4b526ad5bb40e8a038ee6183f7246dfbx" type="Spatial" parent="Sketchfab_model"]
-transform = Transform( 0.01, 0, 0, 0, 0, -0.01, 0, 0.01, 0, 0, 0, 0 )
+transform = Transform( 0.18, 0, 0, 0, -7.86805e-09, -0.18, 0, 0.18, -7.86805e-09, 0, 0.0112542, -2.49893e-18 )
 
 [node name="Object_2" type="Spatial" parent="Sketchfab_model/8f4b526ad5bb40e8a038ee6183f7246dfbx"]
 
@@ -272,5 +314,38 @@ anims/Slime_JUMP = SubResource( 7 )
 anims/Slime_WALK = SubResource( 8 )
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.27882, 0 )
+transform = Transform( 23.0584, 0, 0, 0, 6.7671, 0, 0, 0, 20.9613, 0, 1.37896, 0 )
 shape = SubResource( 9 )
+
+[node name="HurtBox" parent="." instance=ExtResource( 5 )]
+transform = Transform( 3.45723, 0, 0, 0, 2.66592, 0, 0, 0, 3.89589, 0, 0, -1.66741 )
+
+[node name="CollisionShape" parent="HurtBox" index="0"]
+transform = Transform( 3.77416, 0, 0, 0, 2.5296, 0, 0, 0, 2.50613, 0, 1.21339, 0.34268 )
+shape = SubResource( 11 )
+
+[node name="Hitbox" parent="." instance=ExtResource( 6 )]
+
+[node name="CollisionShape" parent="Hitbox" index="0"]
+transform = Transform( -11.7246, 0, 0, 0, 8.19548, 0, 0, 0, 9.25206, 0, 3.97899, 0 )
+shape = SubResource( 12 )
+
+[node name="Wander" parent="." instance=ExtResource( 4 )]
+
+[node name="player_dection" type="Area" parent="."]
+transform = Transform( 50, 0, 0, 0, 10, 0, 0, 0, 50, 0, 0, 0 )
+collision_layer = 0
+collision_mask = 2
+script = ExtResource( 3 )
+
+[node name="CollisionShape" type="CollisionShape" parent="player_dection"]
+shape = SubResource( 10 )
+
+[node name="Sound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 7 )
+
+[connection signal="body_entered" from="player_dection" to="player_dection" method="_on_player_dection_body_entered"]
+[connection signal="body_exited" from="player_dection" to="player_dection" method="_on_player_dection_body_exited"]
+
+[editable path="HurtBox"]
+[editable path="Hitbox"]

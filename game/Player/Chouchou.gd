@@ -19,7 +19,7 @@ func shoot(delta):
 
 
 func _on_Hitbox_area_entered(area):
-	hitbox.disabled = true
+	hitbox.set_deferred("disable", true)
 	explosion.visible = true
 	animation.play("Icosphere001Action")
 	self.sleeping = true

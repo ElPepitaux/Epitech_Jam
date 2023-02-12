@@ -9,7 +9,7 @@ onready var time = $Timer
 var spawn = false
 
 func _ready():
-	set_timer(randi() % 240)
+	set_timer(randi() % 35)
 	
 func _process(delta):
 	if spawn:
@@ -17,14 +17,14 @@ func _process(delta):
 		var enemy = Enemy.instance()
 		enemy.global_transform = global_transform
 		map.add_child(enemy)
-		set_timer(randi() % 240)
+		set_timer(randi() % 35)
 
 func set_timer(duration):
 	time.start(duration)
 
 func _on_HurtBox_area_entered(area):
 	stats.health -= area.damage
-	if stats.health % 2 == 0:
+	if stats.health % 2 == 1:
 		var enemy = Enemy.instance()
 		enemy.global_transform = global_transform
 		map.add_child(enemy)
