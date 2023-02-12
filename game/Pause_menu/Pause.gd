@@ -35,4 +35,4 @@ func _on_Settings_pressed():
 	settings_menu.popup_centered()	
 
 func _on_Main_Menu_pressed():
-	get_tree().root.queue_free()
+	get_tree().quit()
